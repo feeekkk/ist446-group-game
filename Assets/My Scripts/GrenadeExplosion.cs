@@ -20,6 +20,10 @@ public class GrenadeExplosion : MonoBehaviour
 		hitColliders = Physics.OverlapSphere (explosionPoint, blastRadius, explosionLayers);
 
 		foreach (Collider hitCol in hitColliders) {
+			if (hitCol.GetComponent<NavMeshAgent> () != null) {
+				hitCol.GetComponent<NavMeshAgent> ().enabled = false;
+			}
+
 			if (hitCol.GetComponent<Rigidbody> () != null) {
 				hitCol.GetComponent<Rigidbody> ().isKinematic = false;
 				hitCol.GetComponent<Rigidbody> ().AddExplosionForce (explosionPower, explosionPoint, blastRadius, upwardsModifier, ForceMode.Impulse);
