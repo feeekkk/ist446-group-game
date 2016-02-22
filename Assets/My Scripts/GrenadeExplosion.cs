@@ -12,6 +12,7 @@ public class GrenadeExplosion : MonoBehaviour
 
 	void OnCollisionEnter (Collision col)
 	{
+		Debug.Log ("collided");
 		ExplosionWork (col.contacts [0].point);
 		Destroy (gameObject);
 	}
