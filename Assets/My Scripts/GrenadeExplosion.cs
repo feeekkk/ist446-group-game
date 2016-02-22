@@ -8,7 +8,7 @@ public class GrenadeExplosion : MonoBehaviour
 	public float explosionPower;
 	public LayerMask explosionLayers;
 	private float upwardsModifier = 1f;
-	private float destroyTime = 7f;
+	private int damage = 500;
 
 	void OnCollisionEnter (Collision col)
 	{
@@ -31,9 +31,9 @@ public class GrenadeExplosion : MonoBehaviour
 				hitCol.GetComponent<Rigidbody> ().AddExplosionForce (explosionPower, explosionPoint, blastRadius, upwardsModifier, ForceMode.Impulse);
 			}
 
-			if (hitCol.CompareTag ("Enemy")) {
-				// we hit an enemy
-				Destroy (hitCol.gameObject, destroyTime);
+			if (hitCol.transform.GetComponent<Health> ()) {
+				// TO DO: take less damage depending on how far away the collider is from the explosion
+				hitCol.transform.GetComponent<Health> ().TakeDamage (damage);
 			}
 		}
 	}
