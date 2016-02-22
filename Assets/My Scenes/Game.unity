@@ -727,11 +727,11 @@ Prefab:
     - target: {fileID: 2300006, guid: 2ef524954c6354b16849907d7a3ab5e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 93cf0268f1e8c4313bc0ee4a83226bd9, type: 2}
+      objectReference: {fileID: 2100000, guid: 38f2cb415f65f4ffe95272b552ffb8cf, type: 2}
     - target: {fileID: 2300004, guid: 2ef524954c6354b16849907d7a3ab5e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 99c16f661dea14dc09fc731f3141ba71, type: 2}
+      objectReference: {fileID: 2100000, guid: 38f2cb415f65f4ffe95272b552ffb8cf, type: 2}
     - target: {fileID: 2300008, guid: 2ef524954c6354b16849907d7a3ab5e8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
