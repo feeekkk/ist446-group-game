@@ -275,7 +275,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d85d3a32fb6157d488e31edf82b7b1c4, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: d85d3a32fb6157d488e31edf82b7b1c4, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -1825,7 +1825,7 @@ GameObject:
   - 64: {fileID: 1239702326}
   - 23: {fileID: 1239702325}
   - 111: {fileID: 1239702324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Muzzle Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1856,8 +1856,9 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 3c3e5d56004484bf6bd4f5ca354d566d, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 3c3e5d56004484bf6bd4f5ca354d566d, type: 2}
+  - {fileID: 7400000, guid: 3c3e5d56004484bf6bd4f5ca354d566d, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!23 &1239702325
@@ -1866,7 +1867,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1239702322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1894,7 +1895,7 @@ MeshCollider:
   m_GameObject: {fileID: 1239702322}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -2975,7 +2976,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88b5bfec6f1bd17439b2f4339902dca6, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 88b5bfec6f1bd17439b2f4339902dca6, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -3481,7 +3482,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1853315619}
   - 108: {fileID: 1853315620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3494,7 +3495,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1853315618}
-  m_LocalRotation: {x: -0.7063495, y: 0.03271975, z: 0.03271926, w: -0.7063492}
+  m_LocalRotation: {x: -0.70634955, y: 0.032719754, z: 0.032719262, w: -0.70634925}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 16.666664, y: 16.66667, z: 16.66667}
   m_Children: []
@@ -3506,7 +3507,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1853315618}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: 0.99264705, g: 0.8421392, b: 0.5182201, a: 1}
