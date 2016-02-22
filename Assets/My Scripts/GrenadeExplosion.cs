@@ -8,6 +8,7 @@ public class GrenadeExplosion : MonoBehaviour
 	public float explosionPower;
 	public LayerMask explosionLayers;
 	private float upwardsModifier = 1f;
+	private float destroyTime = 7f;
 
 	void OnCollisionEnter (Collision col)
 	{
@@ -27,6 +28,11 @@ public class GrenadeExplosion : MonoBehaviour
 			if (hitCol.GetComponent<Rigidbody> () != null) {
 				hitCol.GetComponent<Rigidbody> ().isKinematic = false;
 				hitCol.GetComponent<Rigidbody> ().AddExplosionForce (explosionPower, explosionPoint, blastRadius, upwardsModifier, ForceMode.Impulse);
+			}
+
+			if (hitCol.CompareTag ("Enemy")) {
+				// we hit an enemy
+				Destroy (hitCol.gameObject, destroyTime);
 			}
 		}
 	}
