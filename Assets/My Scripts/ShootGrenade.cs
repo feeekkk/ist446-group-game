@@ -14,20 +14,14 @@ public class ShootGrenade : MonoBehaviour
 	{
 	
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+	public void SpawnGrenade ()
 	{
-		if (Input.GetButtonDown ("Fire2") && Time.time > nextFire) {
-			SpawnGrenade ();
+		if (Time.time > nextFire) {
+			GameObject go = (GameObject)Instantiate (grenadePrefab, transform.TransformPoint (0, 0, 1f), transform.rotation);
+			go.GetComponent<Rigidbody> ().AddForce (transform.forward * propulsionForce, ForceMode.Impulse);
+			Destroy (go, timeToLive);
 			nextFire = Time.time + fireRate;
 		}
-	}
-
-	void SpawnGrenade ()
-	{
-		GameObject go = (GameObject)Instantiate (grenadePrefab, transform.TransformPoint (0, 0, 1f), transform.rotation);
-		go.GetComponent<Rigidbody> ().AddForce (transform.forward * propulsionForce, ForceMode.Impulse);
-		Destroy (go, timeToLive);
 	}
 }

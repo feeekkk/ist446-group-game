@@ -1235,38 +1235,10 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
   m_PrefabInternal: {fileID: 2101056054}
---- !u!1 &877398219 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100004, guid: 2ef524954c6354b16849907d7a3ab5e8, type: 3}
-  m_PrefabInternal: {fileID: 453589059}
 --- !u!4 &877398220 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400004, guid: 2ef524954c6354b16849907d7a3ab5e8, type: 3}
   m_PrefabInternal: {fileID: 453589059}
---- !u!114 &877398222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 877398219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe647b89fda546708cb7a0068468f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &877398223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 877398219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb98197f8181e4ecc981df4363e775ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grenadePrefab: {fileID: 130972, guid: 904099d57288e4eadbe088ea38229f3f, type: 2}
-  timeToLive: 10
 --- !u!1001 &894216769
 Prefab:
   m_ObjectHideFlags: 0
@@ -1413,6 +1385,17 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_PrefabInternal: {fileID: 442578630}
+--- !u!114 &933868167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 933868165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839a1f11a1d6b47c08cb166b76028331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &933868169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,6 +1407,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe647b89fda546708cb7a0068468f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &933868171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 933868165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb98197f8181e4ecc981df4363e775ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenadePrefab: {fileID: 130972, guid: 904099d57288e4eadbe088ea38229f3f, type: 2}
+  timeToLive: 10
 --- !u!4 &938392383 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d85d3a32fb6157d488e31edf82b7b1c4, type: 2}
