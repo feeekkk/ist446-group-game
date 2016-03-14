@@ -17,7 +17,10 @@ public class Shoot : MonoBehaviour
 		flash = GameObject.Find ("Muzzle Flash");
 	}
 
-	public void FireWeapon ()
+	/**
+	 * attempts to fire the weapon. returns whether or not it fired
+     */
+	public bool FireWeapon ()
 	{
 		if (Time.time > nextFire) {
 			Debug.DrawRay (transform.position, transform.forward, Color.green, 3f);
@@ -35,6 +38,9 @@ public class Shoot : MonoBehaviour
 			}
 
 			nextFire = Time.time + fireRate; // reset fire rate
+			return true;
 		}
+
+		return false;
 	}
 }

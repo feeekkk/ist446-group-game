@@ -10,12 +10,18 @@ public class EnemyChase : MonoBehaviour
 	float nextCheck;
 	float detectionRadius = 50f;
 	NavMeshAgent myNavMeshAgent;
+	EnemyShoot enemyShootScript;
 
 	// Use this for initialization
 	void Start ()
 	{
 		myNavMeshAgent = GetComponent<NavMeshAgent> ();
 		checkRate = Random.Range (0.8f, 1.2f);
+		enemyShootScript = gameObject.GetComponent<EnemyShoot> ();
+
+		if (!enemyShootScript) {
+			throw new UnityException ("no enemy shoot script found");
+		}
 	}
 	
 	// Update is called once per frame
@@ -34,6 +40,9 @@ public class EnemyChase : MonoBehaviour
 			if (hitColliders.Length > 0) {
 				// we have detected the player, lets move towards it
 				myNavMeshAgent.SetDestination (hitColliders [0].transform.position);
+
+				// lets shoot a burst
+				enemyShootScript.ShootBurst ();
 			}
 		}
 	}

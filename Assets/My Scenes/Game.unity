@@ -2500,7 +2500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794279568167d45c9beccf8b63ede313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 193484, guid: 0ea3e2f360b814cff86de5f205563a85, type: 2}
+  objectToSpawn: {fileID: 115352, guid: ca6230798362e4a34a85297270e96243, type: 2}
   numberOfEnemies: 5
   spawnRadius: 1
 --- !u!4 &1456256479 stripped
