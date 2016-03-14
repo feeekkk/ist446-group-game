@@ -8,13 +8,13 @@ public class Shoot : MonoBehaviour
 	float nextFire = 0f;
 	RaycastHit hit;
 	float range = 300f;
-	GameObject flash;
+	Transform flash;
 	int damage = 25;
 
 	// Use this for initialization
 	void Start ()
 	{
-		flash = GameObject.Find ("Muzzle Flash");
+		flash = transform.Find ("M4A1").Find ("Muzzle Flash");
 	}
 
 	/**
