@@ -5,8 +5,6 @@ public class Health : MonoBehaviour
 {
 	public float health = 100;
 	public float maxHealth = 100;
-	public float destroyTime = 5;
-	// seconds before object is destroyed after dying
 
 	// Use this for initialization
 	void Start ()
@@ -25,12 +23,11 @@ public class Health : MonoBehaviour
 
 	public void Die ()
 	{
-		//Debug.Log (gameObject.ToString () + "is dead.");
-		Destroy (gameObject, destroyTime);
 		// update gui
 		if (gameObject.tag == "Player") {
 			gameObject.GetComponent<PlayerController> ().Die ();
 		}
+		gameObject.SetActive (false);
 	}
 
 	public void SetMaxHealth (float max)

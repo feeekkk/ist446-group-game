@@ -1114,7 +1114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 4
+  m_Text: 5
 --- !u!222 &579337378
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2543,7 +2543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 115352, guid: ca6230798362e4a34a85297270e96243, type: 2}
-  amount: 20
+  amount: 1
   spawnRadius: 1
 --- !u!4 &1456256479 stripped
 Transform:

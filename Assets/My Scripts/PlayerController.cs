@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	void Start ()
 	{
 		livesText = GameObject.Find ("Num Lives").GetComponent<Text> ();
+		livesText.text = lives.ToString ();
 	}
 
 	public void Die ()
