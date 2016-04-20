@@ -1242,7 +1242,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -2, y: 10}
+  m_AnchoredPosition: {x: -10, y: 10}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &681271927
@@ -1277,7 +1277,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 17
+  m_Text: 24
 --- !u!222 &681271928
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2543,7 +2543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 115352, guid: ca6230798362e4a34a85297270e96243, type: 2}
-  amount: 0
+  amount: 20
   spawnRadius: 1
 --- !u!4 &1456256479 stripped
 Transform:

@@ -13,12 +13,6 @@ public class Health : MonoBehaviour
 	{
 		Mathf.Clamp (this.health, 0, maxHealth);
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
-	}
 
 	public void TakeDamage (float amount)
 	{
@@ -33,6 +27,10 @@ public class Health : MonoBehaviour
 	{
 		//Debug.Log (gameObject.ToString () + "is dead.");
 		Destroy (gameObject, destroyTime);
+		// update gui
+		if (gameObject.tag == "Player") {
+			gameObject.GetComponent<PlayerController> ().Die ();
+		}
 	}
 
 	public void SetMaxHealth (float max)
