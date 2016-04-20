@@ -26,6 +26,7 @@ public class Health : MonoBehaviour
 		// update gui
 		if (gameObject.tag == "Player") {
 			gameObject.GetComponent<PlayerController> ().Die ();
+			return;
 		}
 		gameObject.SetActive (false);
 	}

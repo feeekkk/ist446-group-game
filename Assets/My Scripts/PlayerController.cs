@@ -17,5 +17,26 @@ public class PlayerController : MonoBehaviour
 	{
 		this.lives--;
 		livesText.text = this.lives.ToString ();
+		SetEnabled (false);
+		StartCoroutine (WaitToRespawn ());
+	}
+
+	IEnumerator WaitToRespawn ()
+	{
+		yield return new WaitForSeconds (5);
+		Respawn ();
+	}
+
+	/**
+	 * helper for enabling / disabling all the components
+	 */
+	private void SetEnabled (bool enabled)
+	{
+		gameObject.GetComponent<CharacterController> ().enabled = enabled;
+	}
+
+	public void Respawn ()
+	{
+		SetEnabled (true);
 	}
 }
