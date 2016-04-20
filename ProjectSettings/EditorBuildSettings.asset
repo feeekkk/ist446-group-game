@@ -7,3 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/My Scenes/Game.unity
+  - enabled: 1
+    path: Assets/My Scenes/NetworkSelect.unity
+  - enabled: 1
+    path: Assets/My Scenes/JoinMenu.unity
+  - enabled: 1
+    path: Assets/My Scenes/HostMenu.unity
