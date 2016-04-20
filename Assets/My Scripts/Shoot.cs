@@ -49,8 +49,11 @@ public class Shoot : MonoBehaviour
 			// update ammo left
 			wd.currentAmmo--;
 
-			// update gui
-			ammoLeftText.text = wd.currentAmmo.ToString ();
+			if (transform.parent && transform.parent.tag == "Player") {
+				// update gui
+				ammoLeftText.text = wd.currentAmmo.ToString ();
+			}
+
 			return true;
 		}
 
