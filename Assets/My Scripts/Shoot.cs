@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour
 {
@@ -7,12 +8,16 @@ public class Shoot : MonoBehaviour
 	RaycastHit hit;
 	Transform flash;
 	WeaponData wd;
+	GameObject hud;
+	Text ammoLeftText;
 
 	// Use this for initialization
 	void Start ()
 	{
 		flash = transform.Find ("M4A1").Find ("Muzzle Flash");
 		wd = gameObject.GetComponent<WeaponData> ();
+		hud = GameObject.Find ("HUD");
+		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
 	}
 
 	/**
@@ -41,6 +46,11 @@ public class Shoot : MonoBehaviour
 			}
 
 			nextFire = Time.time + wd.fireRate; // reset fire rate
+			// update ammo left
+			wd.currentAmmo--;
+
+			// update gui
+			ammoLeftText.text = wd.currentAmmo.ToString ();
 			return true;
 		}
 
