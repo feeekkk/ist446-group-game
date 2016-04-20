@@ -14,6 +14,7 @@ public class Powerup : MonoBehaviour
 
 	void OnTriggerEnter (Collider c)
 	{
+		Debug.Log ("entered");
 		if (c.gameObject.tag != "Player") {
 			return;
 		}
@@ -29,7 +30,7 @@ public class Powerup : MonoBehaviour
 		case "Catlike Instincts":
 			break;
 		}
-		Destroy (gameObject);
+		Destroy (transform.parent.gameObject);
 	}
 		
 }
