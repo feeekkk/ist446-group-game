@@ -20,6 +20,11 @@ public class Shoot : MonoBehaviour
      */
 	public bool FireWeapon ()
 	{
+		if (wd.currentAmmo <= 0) {
+			this.Reload ();
+			return false;
+		}
+
 		if (Time.time > nextFire) {
 			Debug.DrawRay (transform.position, transform.forward, Color.green, 3f);
 			flash.GetComponent<Animation> ().Play ();
@@ -40,5 +45,10 @@ public class Shoot : MonoBehaviour
 		}
 
 		return false;
+	}
+
+	void Reload ()
+	{
+		wd.currentAmmo = wd.maxAmmo;
 	}
 }
