@@ -30,10 +30,10 @@ public class Shoot : MonoBehaviour
 
 				if (hit.transform.GetComponent<Health> ()) {
 					// this collider has health, lets damage it
-					Debug.Log ("bullet hit " + hit.transform.name);
+					//Debug.Log ("bullet hit " + hit.transform.name);
 					hit.transform.GetComponent<Health> ().TakeDamage (damage);
 				} else {
-					Debug.Log ("shot missed");
+					//Debug.Log ("shot missed");
 				}
 			}
 

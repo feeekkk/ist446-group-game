@@ -4,14 +4,14 @@ using System.Collections;
 public class Spawner : MonoBehaviour
 {
 	public GameObject objectToSpawn;
-	public int numberOfEnemies;
+	public int amount;
 	public float spawnRadius = 3f;
 	private Vector3 spawnPosition;
 
 	// Use this for initialization
 	void Start ()
 	{
-		SpawnObjects ();
+		Spawn ();
 	}
 	
 	// Update is called once per frame
@@ -20,9 +20,9 @@ public class Spawner : MonoBehaviour
 	
 	}
 
-	void SpawnObjects ()
+	public void Spawn ()
 	{
-		for (int i = 0; i < numberOfEnemies; i++) {
+		for (int i = 0; i < amount; i++) {
 			spawnPosition = transform.position + Random.insideUnitSphere * spawnRadius;
 			Instantiate (objectToSpawn, spawnPosition, Quaternion.identity);
 		}
