@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -11,6 +12,7 @@ public class HostMenu : MonoBehaviour {
 	public GameObject startText;
 	public GameObject mainButton;
 	public GameObject mainText;
+	public GameObject ServerManager;
 	private bool startHover = false;
 	private bool mainHover = false;
 
@@ -44,7 +46,13 @@ public class HostMenu : MonoBehaviour {
 			mainHover = false;
 		}
 		if (startHover && Input.GetMouseButtonDown(0)) {
-			print ("starting game on " + ip.text + " with score limit " + score.text);
+			ServerManager.GetComponent<NetworkManager>().serverBindAddress = Network.player.ipAddress;
+			ServerManager.GetComponent<NetworkManager>().serverBindToIP = true;
+			ServerManager.GetComponent<NetworkManager>().networkPort = 20600;
+			ServerManager.GetComponent<NetworkManager>().onlineScene = "Game";
+			ServerManager.GetComponent<NetworkManager>().matchSize = 5;
+			//ServerManager.GetComponent<NetworkManager>().playerPrefab = (GameObject)Resources.Load("My Prefabs/FPSController");
+			ServerManager.GetComponent<NetworkManager>().StartHost ();
 		} else {
 
 		}
