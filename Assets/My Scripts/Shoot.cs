@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
 	Transform flash;
 	WeaponData wd;
 	Text ammoLeftText;
+	PlayerController pc;
 
 	// Use this for initialization
 	void Start ()
@@ -16,6 +17,7 @@ public class Shoot : MonoBehaviour
 		flash = transform.Find ("M4A1").Find ("Muzzle Flash");
 		wd = gameObject.GetComponent<WeaponData> ();
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
+
 	}
 
 	/**
@@ -43,7 +45,16 @@ public class Shoot : MonoBehaviour
 				}
 			}
 
-			nextFire = Time.time + wd.fireRate; // reset fire rate
+			float fireRate = wd.fireRate;
+
+			// check if shooter has rapid fire
+			if (transform.parent && transform.parent.GetComponent<PlayerController> ()) {
+				if (transform.parent.GetComponent<PlayerController> ().HasRapidFire ()) {
+					fireRate /= 2; // shoot twice as fast
+				}
+			}
+
+			nextFire = Time.time + fireRate;
 			// update ammo left
 			wd.currentAmmo--;
 

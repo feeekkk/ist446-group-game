@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 	public int lives = 5;
 	Text livesText;
+	private bool rapidFire = false;
 
 	void Start ()
 	{
@@ -60,5 +61,15 @@ public class PlayerController : MonoBehaviour
 	{
 		this.lives++;
 		livesText.text = this.lives.ToString ();
+	}
+
+	public void AddRapidFire ()
+	{
+		this.rapidFire = true;
+	}
+
+	public bool HasRapidFire ()
+	{
+		return this.rapidFire;
 	}
 }

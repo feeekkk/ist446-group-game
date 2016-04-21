@@ -24,6 +24,7 @@ public class Powerup : MonoBehaviour
 			pc.IncreasePlayerMaxHealth (200f);
 			break;
 		case "Rapid Fire":
+			pc.AddRapidFire ();
 			break;
 		case "Eye Of The Tiger":
 			break;
