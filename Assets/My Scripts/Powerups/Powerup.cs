@@ -27,6 +27,7 @@ public class Powerup : MonoBehaviour
 			pc.AddRapidFire ();
 			break;
 		case "Eye Of The Tiger":
+			pc.IncreaseAccuracy ();
 			break;
 		case "Catlike Instincts":
 			pc.AddLife ();

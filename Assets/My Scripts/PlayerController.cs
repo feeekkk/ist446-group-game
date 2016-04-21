@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 	public int lives = 5;
 	Text livesText;
 	private bool rapidFire = false;
+	private bool increasedAccuracy = false;
 
 	void Start ()
 	{
@@ -71,5 +72,16 @@ public class PlayerController : MonoBehaviour
 	public bool HasRapidFire ()
 	{
 		return this.rapidFire;
+	}
+
+	public void IncreaseAccuracy ()
+	{
+		Debug.Log ("increased");
+		this.increasedAccuracy = true;
+	}
+
+	public bool HasIncreasedAccuracy ()
+	{
+		return this.increasedAccuracy;
 	}
 }
