@@ -10,6 +10,7 @@ public class Shoot : MonoBehaviour
 	WeaponData wd;
 	Text ammoLeftText;
 	PlayerController pc;
+	public GameObject bulletFXPrefab;
 
 	// Use this for initialization
 	void Start ()
@@ -33,6 +34,9 @@ public class Shoot : MonoBehaviour
 		if (Time.time > nextFire) {
 			Debug.DrawRay (transform.position, transform.forward, Color.green, 3f);
 			flash.GetComponent<Animation> ().Play ();
+
+			Vector3 bulletEndPosition = transform.position + (transform.forward * wd.range);
+			BulletFX (transform.position, bulletEndPosition);
 
 			if (Physics.Raycast (transform.position, transform.forward, out hit, wd.range)) {
 
@@ -72,5 +76,23 @@ public class Shoot : MonoBehaviour
 	void Reload ()
 	{
 		wd.currentAmmo = wd.maxAmmo;
+	}
+
+	void BulletFX (Vector3 startPos, Vector3 endPos)
+	{
+		if (bulletFXPrefab != null) {
+			GameObject bulletFX = (GameObject)Instantiate (bulletFXPrefab, startPos, Quaternion.LookRotation (endPos - startPos));
+			LineRenderer lr = bulletFX.transform.Find ("LineFX").GetComponent<LineRenderer> ();
+
+			if (lr != null) {
+				lr.SetPosition (0, startPos);
+				lr.SetPosition (1, endPos);
+			} else {
+				Debug.LogError ("Line Renderer missing");
+			}
+		} else {
+			Debug.LogError ("bulletFXPrefab missing");
+		}
+
 	}
 }
