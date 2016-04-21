@@ -5,19 +5,11 @@ public class Health : MonoBehaviour
 {
 	public float health = 100;
 	public float maxHealth = 100;
-	public float destroyTime = 5;
-	// seconds before object is destroyed after dying
 
 	// Use this for initialization
 	void Start ()
 	{
 		Mathf.Clamp (this.health, 0, maxHealth);
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
 	}
 
 	public void TakeDamage (float amount)
@@ -31,8 +23,12 @@ public class Health : MonoBehaviour
 
 	public void Die ()
 	{
-		//Debug.Log (gameObject.ToString () + "is dead.");
-		Destroy (gameObject, destroyTime);
+		// update gui
+		if (gameObject.tag == "Player") {
+			gameObject.GetComponent<PlayerController> ().Die ();
+			return;
+		}
+		gameObject.SetActive (false);
 	}
 
 	public void SetMaxHealth (float max)

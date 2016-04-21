@@ -62,8 +62,9 @@ GameObject:
   - 20: {fileID: 2075240}
   - 81: {fileID: 8186532}
   - 114: {fileID: 11421554}
-  - 114: {fileID: 11465344}
-  - 114: {fileID: 11473448}
+  - 114: {fileID: 11419456}
+  - 114: {fileID: 11412096}
+  - 114: {fileID: 11484486}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -84,6 +85,7 @@ GameObject:
   - 54: {fileID: 5428646}
   - 82: {fileID: 8204480}
   - 114: {fileID: 11420980}
+  - 114: {fileID: 11427212}
   m_Layer: 9
   m_Name: FPSController
   m_TagString: Player
@@ -906,6 +908,30 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11412096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb98197f8181e4ecc981df4363e775ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenadePrefab: {fileID: 130972, guid: 904099d57288e4eadbe088ea38229f3f, type: 2}
+  timeToLive: 10
+--- !u!114 &11419456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe647b89fda546708cb7a0068468f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11420980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -919,7 +945,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  destroyTime: 5
 --- !u!114 &11421554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -931,7 +956,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839a1f11a1d6b47c08cb166b76028331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11465344
+--- !u!114 &11427212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 118
+    i1: 172
+    i2: 242
+    i3: 27
+    i4: 139
+    i5: 41
+    i6: 180
+    i7: 206
+    i8: 200
+    i9: 162
+    i10: 67
+    i11: 108
+    i12: 198
+    i13: 111
+    i14: 115
+    i15: 84
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &11484486
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -939,22 +996,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 129278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe647b89fda546708cb7a0068468f17, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c0639ab768b94097b0bb3292f6e2948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11473448
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 129278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb98197f8181e4ecc981df4363e775ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grenadePrefab: {fileID: 130972, guid: 904099d57288e4eadbe088ea38229f3f, type: 2}
-  timeToLive: 10
+  currentAmmo: 24
+  maxAmmo: 24
+  fireRate: 0.3
+  damage: 25
+  range: 300
 --- !u!114 &11488242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1080,7 +1129,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPlayerAuthority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: grenadePrefab
+      value: 
+      objectReference: {fileID: 130972, guid: 904099d57288e4eadbe088ea38229f3f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 139576}

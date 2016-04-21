@@ -60,8 +60,6 @@ GameObject:
   - 4: {fileID: 481862}
   - 20: {fileID: 2090452}
   - 81: {fileID: 8187086}
-  - 114: {fileID: 11497120}
-  - 114: {fileID: 11495492}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -129,8 +127,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 491628}
   - 111: {fileID: 11127042}
-  - 114: {fileID: 11420122}
-  - 114: {fileID: 11486750}
+  - 114: {fileID: 11498270}
   m_Layer: 8
   m_Name: M4A1
   m_TagString: Untagged
@@ -785,7 +782,7 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &11420122
+--- !u!114 &11498270
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -793,46 +790,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 181460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe647b89fda546708cb7a0068468f17, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c0639ab768b94097b0bb3292f6e2948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11486750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb98197f8181e4ecc981df4363e775ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grenadePrefab: {fileID: 130972, guid: 904099d57288e4eadbe088ea38229f3f, type: 2}
-  timeToLive: 10
---- !u!114 &11495492
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe647b89fda546708cb7a0068468f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11497120
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb98197f8181e4ecc981df4363e775ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grenadePrefab: {fileID: 0}
-  timeToLive: 10
+  currentAmmo: 24
+  maxAmmo: 24
+  fireRate: 0.3
+  damage: 25
+  range: 300
 --- !u!124 &12425276
 Behaviour:
   m_ObjectHideFlags: 1

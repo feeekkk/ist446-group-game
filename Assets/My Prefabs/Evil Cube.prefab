@@ -49,9 +49,10 @@ GameObject:
   - 195: {fileID: 19596668}
   - 114: {fileID: 11418206}
   - 114: {fileID: 11434360}
-  - 114: {fileID: 11426980}
-  - 114: {fileID: 11471694}
   - 114: {fileID: 11427914}
+  - 114: {fileID: 11417100}
+  - 114: {fileID: 11454934}
+  - 114: {fileID: 11456722}
   m_Layer: 0
   m_Name: Evil Cube
   m_TagString: Enemy
@@ -736,6 +737,17 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &11417100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe647b89fda546708cb7a0068468f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11418206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,17 +762,6 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 512
---- !u!114 &11426980
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe647b89fda546708cb7a0068468f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11427914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -785,8 +786,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 100
   destroyTime: 5
---- !u!114 &11471694
+--- !u!114 &11454934
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -799,6 +801,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grenadePrefab: {fileID: 0}
   timeToLive: 10
+--- !u!114 &11456722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0639ab768b94097b0bb3292f6e2948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 24
+  maxAmmo: 24
+  fireRate: 0.3
+  damage: 25
+  range: 300
 --- !u!195 &19596668
 NavMeshAgent:
   m_ObjectHideFlags: 1

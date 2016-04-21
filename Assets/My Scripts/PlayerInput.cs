@@ -9,12 +9,12 @@ public class PlayerInput : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		shootScript = gameObject.GetComponent<Shoot> ();
+		shootScript = gameObject.GetComponentInParent<Shoot> ();
 		if (!shootScript) {
 			throw new UnityException ("No shoot script found in this game object");
 		}
 
-		shootGrenadeScript = gameObject.GetComponent<ShootGrenade> ();
+		shootGrenadeScript = gameObject.GetComponentInParent<ShootGrenade> ();
 		if (!shootGrenadeScript) {
 			Debug.LogError ("No shoot grenade script found");
 		}
