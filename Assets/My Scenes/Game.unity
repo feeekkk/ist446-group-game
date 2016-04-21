@@ -2833,7 +2833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 115352, guid: ca6230798362e4a34a85297270e96243, type: 2}
-  amount: 0
+  amount: 20
   spawnRadius: 1
 --- !u!4 &1456256479 stripped
 Transform:
