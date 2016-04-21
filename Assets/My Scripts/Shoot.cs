@@ -15,7 +15,9 @@ public class Shoot : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		flash = transform.Find ("M4A1").Find ("Muzzle Flash");
+		if (transform.Find ("M4A1")) {
+			flash = transform.Find ("M4A1").Find ("Muzzle Flash");
+		}
 		wd = gameObject.GetComponent<WeaponData> ();
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
 
@@ -33,11 +35,16 @@ public class Shoot : MonoBehaviour
 
 		if (Time.time > nextFire) {
 			Debug.DrawRay (transform.position, transform.forward, Color.green, 3f);
-			flash.GetComponent<Animation> ().Play ();
-
+				
+			// draw fx
+			if (flash) {
+				flash.GetComponent<Animation> ().Play ();
+			}
+					
 			Vector3 bulletEndPosition = transform.position + (transform.forward * wd.range);
 			BulletFX (transform.position, bulletEndPosition);
 
+			// check for hit
 			if (Physics.Raycast (transform.position, transform.forward, out hit, wd.range)) {
 
 				if (hit.transform.GetComponent<Health> ()) {
@@ -48,7 +55,8 @@ public class Shoot : MonoBehaviour
 					Debug.Log ("shot missed");
 				}
 			}
-
+				
+			// update next fire
 			float fireRate = wd.fireRate;
 
 			// check if shooter has rapid fire
