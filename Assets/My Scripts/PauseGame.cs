@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseGame : MonoBehaviour {
     
@@ -42,7 +43,7 @@ public class PauseGame : MonoBehaviour {
     }
 
     public void GoToMainMenu(){
-        Application.LoadLevel ("NetworkSelect");
+        SceneManager.LoadScene ("NetworkSelect");
     }
 
     public void ExitGame(){
