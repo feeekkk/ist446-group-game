@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
 	public int lives = 5;
 	Text livesText;
+	private bool rapidFire = false;
+	private bool increasedAccuracy = false;
 
 	void Start ()
 	{
@@ -18,7 +20,14 @@ public class PlayerController : MonoBehaviour
 		this.lives--;
 		livesText.text = this.lives.ToString ();
 		SetEnabled (false);
+		ClearPowerups ();
 		StartCoroutine (WaitToRespawn ());
+	}
+
+	void ClearPowerups ()
+	{
+		this.rapidFire = false;
+		this.increasedAccuracy = false;
 	}
 
 	IEnumerator WaitToRespawn ()
@@ -38,5 +47,48 @@ public class PlayerController : MonoBehaviour
 	public void Respawn ()
 	{
 		SetEnabled (true);
+	}
+
+	public void IncreasePlayerMaxHealth (float max)
+	{
+		if (!gameObject.GetComponent<Health> ()) {
+			Debug.LogError ("No Health Script Found On Player");
+			return;
+		}
+
+		gameObject.GetComponent<Health> ().SetMaxHealth (max);
+		gameObject.GetComponent<Health> ().Heal (max);
+	}
+
+	public void ResetPlayerMaxHealth ()
+	{
+		gameObject.GetComponent<Health> ().SetMaxHealth (100); // to do: pull from health script
+	}
+
+	public void AddLife ()
+	{
+		this.lives++;
+		livesText.text = this.lives.ToString ();
+	}
+
+	public void AddRapidFire ()
+	{
+		this.rapidFire = true;
+	}
+
+	public bool HasRapidFire ()
+	{
+		return this.rapidFire;
+	}
+
+	public void IncreaseAccuracy ()
+	{
+		Debug.Log ("increased");
+		this.increasedAccuracy = true;
+	}
+
+	public bool HasIncreasedAccuracy ()
+	{
+		return this.increasedAccuracy;
 	}
 }
