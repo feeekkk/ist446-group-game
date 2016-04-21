@@ -21,7 +21,7 @@ public class PauseGame : MonoBehaviour {
     }
 
     void enableMenu(){
-        if (Input.GetButtonDown ("Fire3")) {
+        if (Input.GetButtonDown ("Pause")) {
             if (!isEnabled) {
                 pauseMenu = savedMenu;
                 Time.timeScale = 0.0f;
