@@ -20,7 +20,14 @@ public class PlayerController : MonoBehaviour
 		this.lives--;
 		livesText.text = this.lives.ToString ();
 		SetEnabled (false);
+		ClearPowerups ();
 		StartCoroutine (WaitToRespawn ());
+	}
+
+	void ClearPowerups ()
+	{
+		this.rapidFire = false;
+		this.increasedAccuracy = false;
 	}
 
 	IEnumerator WaitToRespawn ()
