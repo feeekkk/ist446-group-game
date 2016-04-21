@@ -39,4 +39,26 @@ public class PlayerController : MonoBehaviour
 	{
 		SetEnabled (true);
 	}
+
+	public void IncreasePlayerMaxHealth (float max)
+	{
+		if (!gameObject.GetComponent<Health> ()) {
+			Debug.LogError ("No Health Script Found On Player");
+			return;
+		}
+
+		gameObject.GetComponent<Health> ().SetMaxHealth (max);
+		gameObject.GetComponent<Health> ().Heal (max);
+	}
+
+	public void ResetPlayerMaxHealth ()
+	{
+		gameObject.GetComponent<Health> ().SetMaxHealth (100); // to do: pull from health script
+	}
+
+	public void AddLife ()
+	{
+		this.lives++;
+		livesText.text = this.lives.ToString ();
+	}
 }

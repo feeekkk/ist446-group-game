@@ -4,30 +4,31 @@ using System.Collections.Generic;
 
 public class Powerup : MonoBehaviour
 {
-	public string name;
-	GameController gc;
-
-	void Start ()
-	{
-		gc = ScriptableObject.CreateInstance<GameController> ();
-	}
+	public string powerupName;
 
 	void OnTriggerEnter (Collider c)
 	{
-		Debug.Log ("entered");
 		if (c.gameObject.tag != "Player") {
 			return;
 		}
 
-		switch (name) {
+		PlayerController pc = c.gameObject.GetComponent<PlayerController> ();
+
+		if (!pc) {
+			Debug.LogError ("No player controller found on player");
+			return;
+		}
+
+		switch (powerupName) {
 		case "Bear Strength":
-			gc.IncreasePlayerMaxHealth (200f);
+			pc.IncreasePlayerMaxHealth (200f);
 			break;
 		case "Rapid Fire":
 			break;
 		case "Eye Of The Tiger":
 			break;
 		case "Catlike Instincts":
+			pc.AddLife ();
 			break;
 		}
 		Destroy (transform.parent.gameObject);

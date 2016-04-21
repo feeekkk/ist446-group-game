@@ -8,7 +8,6 @@ public class Shoot : MonoBehaviour
 	RaycastHit hit;
 	Transform flash;
 	WeaponData wd;
-	GameObject hud;
 	Text ammoLeftText;
 
 	// Use this for initialization
@@ -16,7 +15,6 @@ public class Shoot : MonoBehaviour
 	{
 		flash = transform.Find ("M4A1").Find ("Muzzle Flash");
 		wd = gameObject.GetComponent<WeaponData> ();
-		hud = GameObject.Find ("HUD");
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
 	}
 
