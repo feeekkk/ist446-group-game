@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/My Scenes/Farm Level.unity
+- path: Assets/My Scenes/HostMenu.unity
   isLoaded: 1
   isActive: 1
