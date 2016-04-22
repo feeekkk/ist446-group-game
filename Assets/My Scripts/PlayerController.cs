@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 		SetEnabled (false);
 		ClearPowerups ();
 		StartCoroutine (WaitToRespawn ());
+		ResetPlayerHealth ();
 	}
 
 	void ClearPowerups ()
@@ -63,6 +64,11 @@ public class PlayerController : MonoBehaviour
 	public void ResetPlayerMaxHealth ()
 	{
 		gameObject.GetComponent<Health> ().SetMaxHealth (100); // to do: pull from health script
+	}
+
+	public void ResetPlayerHealth ()
+	{
+		gameObject.GetComponent<Health> ().SetHealth (100); // to do: pull from health script
 	}
 
 	public void AddLife ()

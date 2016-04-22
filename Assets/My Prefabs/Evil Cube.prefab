@@ -749,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletFXPrefab: {fileID: 106184, guid: 45c2790f3052ddf43978625598d477b1, type: 2}
+  blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
 --- !u!114 &11418206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,6 +789,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
+  blood1: {fileID: 2800000, guid: 4a0db9a808c3f4ff58661f6670c06161, type: 3}
+  blood2: {fileID: 2800000, guid: add0730e4b2044efa82f13f59d4c071a, type: 3}
+  blood3: {fileID: 2800000, guid: 6619ece6150a34cc7a047c0cebb526b2, type: 3}
+  blood4: {fileID: 2800000, guid: b04399c012aea4e5dbdcdab63e1219d7, type: 3}
+  increaseHealth: 0
 --- !u!114 &11454934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -843,7 +849,27 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: blood1
+      value: 
+      objectReference: {fileID: 2800000, guid: 4a0db9a808c3f4ff58661f6670c06161, type: 3}
+    - target: {fileID: 0}
+      propertyPath: blood2
+      value: 
+      objectReference: {fileID: 2800000, guid: add0730e4b2044efa82f13f59d4c071a, type: 3}
+    - target: {fileID: 0}
+      propertyPath: blood3
+      value: 
+      objectReference: {fileID: 2800000, guid: 6619ece6150a34cc7a047c0cebb526b2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: blood4
+      value: 
+      objectReference: {fileID: 2800000, guid: b04399c012aea4e5dbdcdab63e1219d7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 115352}
