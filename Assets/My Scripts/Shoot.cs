@@ -34,18 +34,11 @@ public class Shoot : MonoBehaviour
 		}
 
 		if (Time.time > nextFire) {
-			Debug.DrawRay (transform.position, transform.forward, Color.green, 3f);
-				
-			// draw fx
-			if (flash) {
-				flash.GetComponent<Animation> ().Play ();
-			}
-					
-			Vector3 bulletEndPosition = transform.position + (transform.forward * wd.range);
-			BulletFX (transform.position, bulletEndPosition);
+			Vector3 shotVector = CalculateShotVector ();
+			DrawFX (shotVector);
 
 			// check for hit
-			if (Physics.Raycast (transform.position, transform.forward, out hit, wd.range)) {
+			if (Physics.Raycast (transform.position, shotVector, out hit, wd.range)) {
 
 				if (hit.transform.GetComponent<Health> ()) {
 					// this collider has health, lets damage it
@@ -55,25 +48,9 @@ public class Shoot : MonoBehaviour
 					Debug.Log ("shot missed");
 				}
 			}
-				
-			// update next fire
-			float fireRate = wd.fireRate;
 
-			// check if shooter has rapid fire
-			if (transform.parent && transform.parent.GetComponent<PlayerController> ()) {
-				if (transform.parent.GetComponent<PlayerController> ().HasRapidFire ()) {
-					fireRate /= 2; // shoot twice as fast
-				}
-			}
-
-			nextFire = Time.time + fireRate;
-			// update ammo left
-			wd.currentAmmo--;
-
-			if (transform.parent && transform.parent.tag == "Player") {
-				// update gui
-				ammoLeftText.text = wd.currentAmmo.ToString ();
-			}
+			UpdateNextFire ();
+			UpdateAmmoRemaining ();
 
 			return true;
 		}
@@ -81,12 +58,57 @@ public class Shoot : MonoBehaviour
 		return false;
 	}
 
+	//http://answers.unity3d.com/comments/467798/view.html
+	private Vector3 CalculateShotVector ()
+	{
+		Vector3 direction = Random.insideUnitCircle * wd.accuracyScaleLimit;
+		direction.z = wd.accuracyZ; // circle is at Z units 
+		direction = transform.TransformDirection (direction.normalized);
+		return direction;
+	}
+
+	private void UpdateAmmoRemaining ()
+	{
+		// update ammo left
+		wd.currentAmmo--;
+
+		if (transform.parent && transform.parent.tag == "Player") {
+			// update gui
+			ammoLeftText.text = wd.currentAmmo.ToString ();
+		}
+	}
+
+	private void UpdateNextFire ()
+	{
+		float fireRate = wd.fireRate;
+
+		// check if shooter has rapid fire
+		if (transform.parent && transform.parent.GetComponent<PlayerController> ()) {
+			if (transform.parent.GetComponent<PlayerController> ().HasRapidFire ()) {
+				fireRate /= 2; // shoot twice as fast
+			}
+		}
+
+		nextFire = Time.time + fireRate;
+	}
+
+	private void DrawFX (Vector3 direction)
+	{
+		Debug.DrawRay (transform.position, direction, Color.green, 3f);
+		if (flash) {
+			flash.GetComponent<Animation> ().Play ();
+		}
+
+		Vector3 bulletEndPosition = transform.position + (direction * wd.range);
+		BulletFX (transform.position, bulletEndPosition);
+	}
+
 	void Reload ()
 	{
 		wd.currentAmmo = wd.maxAmmo;
 	}
 
-	void BulletFX (Vector3 startPos, Vector3 endPos)
+	private void BulletFX (Vector3 startPos, Vector3 endPos)
 	{
 		if (bulletFXPrefab != null) {
 			GameObject bulletFX = (GameObject)Instantiate (bulletFXPrefab, startPos, Quaternion.LookRotation (endPos - startPos));
