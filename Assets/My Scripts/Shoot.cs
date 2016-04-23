@@ -35,7 +35,6 @@ public class Shoot : MonoBehaviour
 
 		if (Time.time > nextFire) {
 			Vector3 shotVector = CalculateShotVector ();
-			DrawFX (shotVector);
 
 			// check for hit
 			if (Physics.Raycast (transform.position, shotVector, out hit, wd.range)) {
@@ -45,10 +44,11 @@ public class Shoot : MonoBehaviour
 					Debug.Log ("bullet hit " + hit.transform.name);
 					hit.transform.GetComponent<Health> ().TakeDamage (wd.damage);
 				} else {
-					Debug.Log ("shot missed");
+					//Debug.Log ("shot missed");
 				}
 			}
 
+			DrawFX (shotVector);
 			UpdateNextFire ();
 			UpdateAmmoRemaining ();
 
@@ -94,13 +94,12 @@ public class Shoot : MonoBehaviour
 
 	private void DrawFX (Vector3 direction)
 	{
-		Debug.DrawRay (transform.position, direction, Color.green, 3f);
+		//Debug.DrawRay (transform.position, direction, Color.green, 3f);
 		if (flash) {
 			flash.GetComponent<Animation> ().Play ();
 		}
 
-		Vector3 bulletEndPosition = transform.position + (direction * wd.range);
-		BulletFX (transform.position, bulletEndPosition);
+		BulletFX (transform.position, direction);
 	}
 
 	void Reload ()
@@ -108,8 +107,17 @@ public class Shoot : MonoBehaviour
 		wd.currentAmmo = wd.maxAmmo;
 	}
 
-	private void BulletFX (Vector3 startPos, Vector3 endPos)
+	private void BulletFX (Vector3 startPos, Vector3 direction)
 	{
+		Vector3 endPos;
+
+		if (!hit.transform) {
+			endPos = transform.position + (direction * wd.range);
+		} else {
+			endPos = hit.transform.position;
+		}
+
+
 		if (bulletFXPrefab != null) {
 			GameObject bulletFX = (GameObject)Instantiate (bulletFXPrefab, startPos, Quaternion.LookRotation (endPos - startPos));
 			LineRenderer lr = bulletFX.transform.Find ("LineFX").GetComponent<LineRenderer> ();
