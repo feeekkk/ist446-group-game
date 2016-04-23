@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: cfe647b89fda546708cb7a0068468f17
-timeCreated: 1461289483
+guid: ffa10f05729254edabaef91dbc9718da
+timeCreated: 1461289922
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - bulletFXPrefab: {instanceID: 0}
-  - blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
+  - bloodSplatter: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

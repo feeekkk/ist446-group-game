@@ -11,6 +11,7 @@ public class Shoot : MonoBehaviour
 	Text ammoLeftText;
 	PlayerController pc;
 	public GameObject bulletFXPrefab;
+	public GameObject blood;
 
 	// Use this for initialization
 	void Start ()
@@ -44,6 +45,7 @@ public class Shoot : MonoBehaviour
 					// this collider has health, lets damage it
 					Debug.Log ("bullet hit " + hit.transform.name);
 					hit.transform.GetComponent<Health> ().TakeDamage (wd.damage);
+					Instantiate (blood, hit.transform.position, hit.transform.rotation);
 				} else {
 					Debug.Log ("shot missed");
 				}
