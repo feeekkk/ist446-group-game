@@ -43,6 +43,7 @@ public class PlayerController : NetworkBehaviour
 		SetEnabled (false);
 		ClearPowerups ();
 		StartCoroutine (WaitToRespawn ());
+		ResetPlayerHealth ();
 	}
 
 	void ClearPowerups ()
@@ -84,6 +85,11 @@ public class PlayerController : NetworkBehaviour
 	public void ResetPlayerMaxHealth ()
 	{
 		gameObject.GetComponent<Health> ().SetMaxHealth (100); // to do: pull from health script
+	}
+
+	public void ResetPlayerHealth ()
+	{
+		gameObject.GetComponent<Health> ().SetHealth (100); // to do: pull from health script
 	}
 
 	public void AddLife ()

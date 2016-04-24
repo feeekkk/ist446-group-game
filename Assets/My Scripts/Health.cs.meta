@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: 5c3c86eab3b3c483c8fcd6302d3bd01e
-timeCreated: 1456166528
+timeCreated: 1461295463
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - blood1: {fileID: 2800000, guid: 4a0db9a808c3f4ff58661f6670c06161, type: 3}
+  - blood2: {fileID: 2800000, guid: add0730e4b2044efa82f13f59d4c071a, type: 3}
+  - blood3: {fileID: 2800000, guid: 6619ece6150a34cc7a047c0cebb526b2, type: 3}
+  - blood4: {fileID: 2800000, guid: b04399c012aea4e5dbdcdab63e1219d7, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
