@@ -12,7 +12,7 @@ public class Shoot : MonoBehaviour
 	PlayerController pc;
 	public GameObject bulletFXPrefab;
 	public GameObject blood;
-
+	AudioSource audio;
 	// Use this for initialization
 	void Start ()
 	{
@@ -21,6 +21,7 @@ public class Shoot : MonoBehaviour
 		}
 		wd = gameObject.GetComponent<WeaponData> ();
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
+		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
 
 	}
 
@@ -53,6 +54,7 @@ public class Shoot : MonoBehaviour
 			DrawFX (shotVector);
 			UpdateNextFire ();
 			UpdateAmmoRemaining ();
+			playShot ();
 
 			return true;
 		}
@@ -134,5 +136,11 @@ public class Shoot : MonoBehaviour
 			Debug.LogError ("bulletFXPrefab missing");
 		}
 
+	}
+
+	void playShot(){
+		if (transform.parent && transform.parent.tag == "Player") {
+			audio.Play ();
+		}
 	}
 }
