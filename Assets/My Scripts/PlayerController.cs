@@ -1,18 +1,39 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
+	[SerializeField] Material[] animalMaterials;
+	public enum Teams {FARMERS, ANIMALS};
+	private Teams team = Teams.FARMERS;
 	public int lives = 5;
 	Text livesText;
 	private bool rapidFire = false;
 	private bool increasedAccuracy = false;
+	private int count;	// count of frames since damage last taken
 
 	void Start ()
 	{
 		livesText = GameObject.Find ("Num Lives").GetComponent<Text> ();
 		livesText.text = lives.ToString ();
+		int numPlayers = ClientScene.localPlayers.Count;
+		if (numPlayers % 4 != 1) {
+			team = Teams.ANIMALS;
+			int index = (int)Random.Range (0, animalMaterials.Length);
+			Material[] materials = new Material[1];
+			materials [0] = animalMaterials [index];
+			//GetComponent<MeshRenderer>.materials = materials;
+		}
+	}
+
+	void Update ()
+	{
+		count++;
+		if (GetComponent<Health> ().health < GetComponent<Health> ().maxHealth && count > 300) {
+			GetComponent<Health> ().Heal (1);
+		}
 	}
 
 	public void Die ()
@@ -90,5 +111,15 @@ public class PlayerController : MonoBehaviour
 	public bool HasIncreasedAccuracy ()
 	{
 		return this.increasedAccuracy;
+	}
+
+	public float ReceiveDamage(float damage)
+	{
+		GetComponent<Health> ().health -= damage;
+		if (GetComponent<Health> ().health < 1) {
+			Die ();
+		}
+		count = 0;
+		return GetComponent<Health> ().health;
 	}
 }

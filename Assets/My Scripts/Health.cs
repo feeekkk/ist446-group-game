@@ -12,25 +12,6 @@ public class Health : MonoBehaviour
 		Mathf.Clamp (this.health, 0, maxHealth);
 	}
 
-	public void TakeDamage (float amount)
-	{
-		health -= amount;
-
-		if (health <= 0) {
-			Die ();
-		}
-	}
-
-	public void Die ()
-	{
-		// update gui
-		if (gameObject.tag == "Player") {
-			gameObject.GetComponent<PlayerController> ().Die ();
-			return;
-		}
-		gameObject.SetActive (false);
-	}
-
 	public void SetMaxHealth (float max)
 	{
 		this.maxHealth = max;
