@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 using System.Collections;
 
 public class JoinMenu : MonoBehaviour {
@@ -10,6 +11,7 @@ public class JoinMenu : MonoBehaviour {
 	public GameObject startText;
 	public GameObject mainButton;
 	public GameObject mainText;
+	public GameObject ClientManager;
 	private bool startHover = false;
 	private bool mainHover = false;
 
@@ -43,7 +45,10 @@ public class JoinMenu : MonoBehaviour {
 			mainHover = false;
 		}
 		if (startHover && Input.GetMouseButtonDown(0)) {
-			print ("joining game on " + ip.text);
+			ClientManager.GetComponent<NetworkManager>().networkAddress = ip.text;
+			ClientManager.GetComponent<NetworkManager>().networkPort = 20600;
+			ClientManager.GetComponent<NetworkManager>().onlineScene = "Farm Level";
+			ClientManager.GetComponent<NetworkManager>().StartClient ();
 		} else {
 
 		}

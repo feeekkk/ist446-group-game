@@ -49,9 +49,8 @@ public class HostMenu : MonoBehaviour {
 			ServerManager.GetComponent<NetworkManager>().serverBindAddress = Network.player.ipAddress;
 			ServerManager.GetComponent<NetworkManager>().serverBindToIP = true;
 			ServerManager.GetComponent<NetworkManager>().networkPort = 20600;
-			ServerManager.GetComponent<NetworkManager>().onlineScene = "Game";
+			ServerManager.GetComponent<NetworkManager>().onlineScene = "Farm Level";
 			ServerManager.GetComponent<NetworkManager>().matchSize = 5;
-			//ServerManager.GetComponent<NetworkManager>().playerPrefab = (GameObject)Resources.Load("My Prefabs/FPSController");
 			ServerManager.GetComponent<NetworkManager>().StartHost ();
 		} else {
 
