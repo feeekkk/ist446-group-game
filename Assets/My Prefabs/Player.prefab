@@ -660,7 +660,6 @@ GameObject:
   - 114: {fileID: 11473942}
   - 114: {fileID: 11463836}
   - 114: {fileID: 11467590}
-  - 114: {fileID: 11424314}
   - 114: {fileID: 11480474}
   m_Layer: 10
   m_Name: Player
@@ -2645,7 +2644,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155246}
-  m_LocalRotation: {x: -0.12900811, y: 0.7110251, z: 0.13532032, w: 0.67785585}
+  m_LocalRotation: {x: -0.12900813, y: 0.7110252, z: 0.13532034, w: 0.6778559}
   m_LocalPosition: {x: 0.108369485, y: -0.06856059, z: 0.014612337}
   m_LocalScale: {x: 0.6255082, y: 1, z: 1}
   m_Children: []
@@ -6111,19 +6110,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e9714160ce34f2b4ab63ff8c27bd68e1, type: 3}
   m_JumpSound: {fileID: 0}
   m_LandSound: {fileID: 0}
---- !u!114 &11424314
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb98197f8181e4ecc981df4363e775ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grenadePrefab: {fileID: 130972, guid: 904099d57288e4eadbe088ea38229f3f, type: 2}
-  timeToLive: 10
 --- !u!114 &11437804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6182,6 +6168,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: abfbaf7c500713641a87a7bb7700ad85, type: 2}
   - {fileID: 2100000, guid: 95fd3b2dfe84ea24293d0a7fd58b968d, type: 2}
   deadBody: {fileID: 113180, guid: 1a341bdcae10a422cbd0aac3d1e03503, type: 2}
+  team: 0
   lives: 5
   isLocalPlayer: 0
 --- !u!114 &11470660
