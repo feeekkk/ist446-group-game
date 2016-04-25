@@ -30,13 +30,7 @@ public class PlayerController : NetworkBehaviour
 		livesText = GameObject.Find ("Num Lives").GetComponent<Text> ();
 		livesText.text = lives.ToString ();
 		int numPlayers = ClientScene.localPlayers.Count;
-		if (numPlayers % 4 != 1) {
-			team = Teams.ANIMALS;
-			int index = (int)Random.Range (0, animalMaterials.Length);
-			Material[] materials = new Material[1];
-			materials [0] = animalMaterials [index];
-			//GetComponent<MeshRenderer>.materials = materials;
-		}
+
 		FirstPersonController fpc = GameObject.FindObjectOfType<FirstPersonController> ();
 		if (team == Teams.ANIMALS) {
 			fpc.m_RunSpeed = fpc.m_RunSpeed + 10;            

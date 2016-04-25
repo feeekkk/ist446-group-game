@@ -11,6 +11,7 @@ public class EnemyChase : MonoBehaviour
 	float detectionRadius = 50f;
 	NavMeshAgent myNavMeshAgent;
 	EnemyShoot enemyShootScript;
+	PlayerController pc;
 
 	// Use this for initialization
 	void Start ()
@@ -22,6 +23,10 @@ public class EnemyChase : MonoBehaviour
 		if (!enemyShootScript) {
 			throw new UnityException ("no enemy shoot script found");
 		}
+
+		pc = GetComponent<PlayerController> ();
+
+
 	}
 	
 	// Update is called once per frame
