@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -26,6 +27,10 @@ public class PlayerController : NetworkBehaviour
 			materials [0] = animalMaterials [index];
 			//GetComponent<MeshRenderer>.materials = materials;
 		}
+		FirstPersonController fpc = GameObject.FindObjectOfType<FirstPersonController> ();
+		if (team == Teams.ANIMALS){
+			fpc.m_RunSpeed = fpc.m_RunSpeed + 10;            
+		} 
 	}
 
 	void Update ()
