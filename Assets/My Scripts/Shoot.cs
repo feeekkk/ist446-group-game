@@ -207,4 +207,9 @@ public class Shoot : MonoBehaviour
 
 		UpdateGui ();
 	}
+
+	public void SetActiveWeapon (bool active)
+	{
+		wds [activeWeaponIndex].gameObject.SetActive (active);
+	}
 }

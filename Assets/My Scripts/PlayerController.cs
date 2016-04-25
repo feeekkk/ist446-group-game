@@ -54,15 +54,16 @@ public class PlayerController : NetworkBehaviour
 
 	public void Die ()
 	{
+		Debug.Log ("ded: " + gameObject.name);
 		this.lives--;
 		if (isLocalPlayer) {
 			livesText.text = this.lives.ToString ();
 		}
 		Quaternion rotation = Quaternion.Euler (90, 0, 0);
 		Instantiate (deadBody, transform.position, rotation);
+		StartCoroutine (WaitToRespawn ());
 		SetEnabled (false);
 		ClearPowerups ();
-		StartCoroutine (WaitToRespawn ());
 		ResetPlayerHealth ();
 
 		if (this.team == Teams.FARMERS) {
@@ -90,11 +91,27 @@ public class PlayerController : NetworkBehaviour
 	private void SetEnabled (bool enabled)
 	{
 		gameObject.GetComponent<CharacterController> ().enabled = enabled;
+
+		if (isLocalPlayer) {
+			gameObject.GetComponent<MeshRenderer> ().enabled = enabled;
+			gameObject.GetComponent<MeshCollider> ().enabled = enabled;
+			gameObject.GetComponent<FirstPersonController> ().enabled = enabled;
+			gameObject.GetComponent<ShootGrenade> ().enabled = enabled;
+		} else {
+			// lives in default jawn
+			transform.Find ("default").GetComponent<MeshRenderer> ().enabled = enabled;
+			gameObject.GetComponent<EnemyChase> ().enabled = enabled;
+		}
+			
+		gameObject.GetComponent<Health> ().enabled = enabled;
+		gameObject.GetComponent<Shoot> ().enabled = enabled;
+		gameObject.GetComponent<Shoot> ().SetActiveWeapon (enabled);
 	}
 
 	public void Respawn ()
 	{
 		SetEnabled (true);
+		Debug.Log ("respawning: " + gameObject.name);
 	}
 
 	public void IncreasePlayerMaxHealth (float max)
