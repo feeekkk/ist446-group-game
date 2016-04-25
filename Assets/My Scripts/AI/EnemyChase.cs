@@ -27,10 +27,10 @@ public class EnemyChase : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		CheckIfPlayerInRange ();
+		CheckIfEnemyInRange ();
 	}
 
-	void CheckIfPlayerInRange ()
+	void CheckIfEnemyInRange ()
 	{
 		if (Time.time > nextCheck && myNavMeshAgent.enabled == true) {
 			nextCheck = Time.time + checkRate;
@@ -42,7 +42,7 @@ public class EnemyChase : MonoBehaviour
 				myNavMeshAgent.SetDestination (hitColliders [0].transform.position);
 
 				// lets shoot a burst
-				enemyShootScript.ShootBurst ();
+				enemyShootScript.Shoot ();
 			}
 		}
 	}

@@ -20,11 +20,24 @@ public class GameManager : MonoBehaviour
 	{
 		animalScore--;
 		animalText.text = animalScore.ToString ();
+
+		if (animalScore < 0) {
+			GameOver ();
+		}
 	}
 
 	public void IncrementFarmerScore ()
 	{
 		farmerScore--;
 		farmerText.text = farmerScore.ToString ();
+
+		if (farmerScore < 0) {
+			GameOver ();
+		}
+	}
+
+	public void GameOver ()
+	{
+		
 	}
 }

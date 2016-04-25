@@ -22,17 +22,8 @@ public class EnemyShoot : MonoBehaviour
 	
 	}
 
-	public void ShootBurst ()
+	public void Shoot ()
 	{
-		
-		int count = 0;
-
-		//while (count < 3) {
-		bool shot = shootScript.FireWeapon ();
-		if (shot) {
-			count++;
-		}
-		//}
-
+		shootScript.FireWeapon ();
 	}
 }
