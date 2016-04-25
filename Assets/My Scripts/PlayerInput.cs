@@ -33,5 +33,9 @@ public class PlayerInput : MonoBehaviour
 		if (Input.GetButton ("Fire2") && shootGrenadeScript) {
 			shootGrenadeScript.SpawnGrenade ();
 		}
+
+		if (Input.GetButtonDown ("Reload")) {
+			shootScript.Reload ();
+		}
 	}
 }

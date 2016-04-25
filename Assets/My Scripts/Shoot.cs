@@ -82,10 +82,14 @@ public class Shoot : MonoBehaviour
 		wds [activeWeaponIndex].currentAmmo--;
 
 		if (transform.parent && transform.parent.tag == "Player") {
-			// update gui
-			ammoLeftText.text = wds [activeWeaponIndex].currentAmmo.ToString ();
-			maxAmmoText.text = wds [activeWeaponIndex].maxAmmo.ToString ();
+			UpdateGui ();
 		}
+	}
+
+	private void UpdateGui ()
+	{
+		ammoLeftText.text = wds [activeWeaponIndex].currentAmmo.ToString ();
+		maxAmmoText.text = wds [activeWeaponIndex].maxAmmo.ToString ();
 	}
 
 	private void UpdateNextFire ()
@@ -112,9 +116,10 @@ public class Shoot : MonoBehaviour
 		BulletFX (transform.position, direction);
 	}
 
-	void Reload ()
+	public void Reload ()
 	{
 		wds [activeWeaponIndex].currentAmmo = wds [activeWeaponIndex].maxAmmo;
+		UpdateGui ();
 	}
 
 	private void BulletFX (Vector3 startPos, Vector3 direction)
@@ -162,5 +167,7 @@ public class Shoot : MonoBehaviour
 		}
 
 		wds [activeWeaponIndex].gameObject.SetActive (true);
+
+		UpdateGui ();
 	}
 }
