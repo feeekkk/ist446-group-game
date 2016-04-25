@@ -19,7 +19,7 @@ public class Shoot : MonoBehaviour
 		if (transform.Find ("M4A1")) {
 			flash = transform.Find ("M4A1").Find ("Muzzle Flash");
 		}
-		wd = gameObject.GetComponent<WeaponData> ();
+		wd = gameObject.GetComponentInChildren<WeaponData> ();
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
 		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
 
@@ -138,7 +138,8 @@ public class Shoot : MonoBehaviour
 
 	}
 
-	void playShot(){
+	void playShot ()
+	{
 		if (transform.parent && transform.parent.tag == "Player") {
 			audio.Play ();
 		}
