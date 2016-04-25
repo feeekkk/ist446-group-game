@@ -15,6 +15,7 @@ public class PlayerController : NetworkBehaviour
 
 	;
 
+	public GameObject deadBody;
 	private Teams team = Teams.FARMERS;
 	public int lives = 5;
 	Text livesText;
@@ -36,7 +37,7 @@ public class PlayerController : NetworkBehaviour
 			//GetComponent<MeshRenderer>.materials = materials;
 		}
 		FirstPersonController fpc = GameObject.FindObjectOfType<FirstPersonController> ();
-		if (team == Teams.ANIMALS){
+		if (team == Teams.ANIMALS) {
 			fpc.m_RunSpeed = fpc.m_RunSpeed + 10;            
 		} 
 	}
@@ -53,6 +54,8 @@ public class PlayerController : NetworkBehaviour
 	{
 		this.lives--;
 		livesText.text = this.lives.ToString ();
+		Quaternion rotation = Quaternion.Euler (90, 0, 0);
+		Instantiate (deadBody, transform.position, rotation);
 		SetEnabled (false);
 		ClearPowerups ();
 		StartCoroutine (WaitToRespawn ());
