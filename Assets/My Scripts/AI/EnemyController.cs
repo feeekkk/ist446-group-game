@@ -12,8 +12,7 @@ public class EnemyController : MonoBehaviour
 	NavMeshAgent myNavMeshAgent;
 	EnemyShoot enemyShootScript;
 	PlayerController pc;
-	bool goToFarmerSpawn = false;
-	Vector3 farmerSpawn;
+	Vector3 destinationSpawn;
 
 	// Use this for initialization
 	void Start ()
@@ -29,8 +28,9 @@ public class EnemyController : MonoBehaviour
 		pc = GetComponent<PlayerController> ();
 
 		if (pc.GetTeam ().Equals ("ANIMALS")) {
-			this.goToFarmerSpawn = true;
-			this.farmerSpawn = GameObject.Find ("Farmer Spawn").GetComponent<Spawner> ().GetSpawnPosition ();
+			this.destinationSpawn = GameObject.Find ("Farmer Spawn").GetComponent<Spawner> ().GetSpawnPosition ();
+		} else {
+			this.destinationSpawn = GameObject.Find ("Animal Spawn").GetComponent<Spawner> ().GetSpawnPosition ();
 		}
 	}
 	
@@ -43,15 +43,13 @@ public class EnemyController : MonoBehaviour
 
 		if (!CheckIfEnemyInRange ()) {
 			Debug.Log ("didnt find an enemy");
-			if (goToFarmerSpawn) {
-				GoToWardsFarmerSpawn ();
-			}
+			GoTowardsSpawn ();
 		}
 	}
 
-	void GoToWardsFarmerSpawn ()
+	void GoTowardsSpawn ()
 	{
-		myNavMeshAgent.SetDestination (farmerSpawn);
+		myNavMeshAgent.SetDestination (destinationSpawn);
 	}
 
 	bool CheckIfEnemyInRange ()
