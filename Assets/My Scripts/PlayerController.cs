@@ -115,11 +115,10 @@ public class PlayerController : NetworkBehaviour
 			gameObject.GetComponent<MeshRenderer> ().enabled = enabled;
 			gameObject.GetComponent<MeshCollider> ().enabled = enabled;
 			gameObject.GetComponent<FirstPersonController> ().enabled = enabled;
-			gameObject.GetComponent<ShootGrenade> ().enabled = enabled;
 		} else {
 			// lives in default jawn
 			transform.Find ("default").GetComponent<MeshRenderer> ().enabled = enabled;
-			gameObject.GetComponent<EnemyChase> ().enabled = enabled;
+			gameObject.GetComponent<EnemyController> ().enabled = enabled;
 		}
 			
 		gameObject.GetComponent<Health> ().enabled = enabled;
