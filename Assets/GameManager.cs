@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
 		farmerText = GameObject.Find ("Farmers Score").GetComponent<Text> ();
 
 		// spawn player in farmer spawn
-		GameObject spawn = GameObject.Find ("Farmer Spawn");
-		Instantiate (player, spawn.transform.position, Quaternion.identity);
+		Vector3 spawn = GameObject.Find ("Farmer Spawn").GetComponent<Spawner> ().GetSpawnPosition ();
+		Instantiate (player, spawn, Quaternion.identity);
 	}
 
 	public void IncrementAnimalScore ()

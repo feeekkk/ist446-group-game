@@ -25,6 +25,7 @@ public class PlayerController : NetworkBehaviour
 	// count of frames since damage last taken
 	private GameManager gm;
 	public bool isLocalPlayer = false;
+	private Spawner spawn;
 
 	void Start ()
 	{
@@ -42,6 +43,15 @@ public class PlayerController : NetworkBehaviour
 		} 
 			
 		gm = GameObject.Find ("GAME_MANAGER").GetComponent<GameManager> ();
+
+		switch (team) {
+		case Teams.ANIMALS:
+			spawn = GameObject.Find ("Animal Spawn").GetComponent<Spawner> ();
+			break;
+		case Teams.FARMERS:
+			spawn = GameObject.Find ("Farmer Spawn").GetComponent<Spawner> ();
+			break;
+		}
 	}
 
 	void Update ()
@@ -114,6 +124,7 @@ public class PlayerController : NetworkBehaviour
 
 	public void Respawn ()
 	{
+		transform.position = spawn.GetSpawnPosition ();
 		SetEnabled (true);
 		Debug.Log ("respawning: " + gameObject.name);
 	}
