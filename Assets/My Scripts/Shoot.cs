@@ -131,8 +131,9 @@ public class Shoot : MonoBehaviour
 		if (flash) {
 			flash.GetComponent<Animation> ().Play ();
 		}
-
-		BulletFX (transform.position, direction);
+		Vector3 pos = transform.position;
+		pos.y += 1;
+		BulletFX (pos, direction);
 	}
 
 	public void Reload ()
