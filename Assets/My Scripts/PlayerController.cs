@@ -61,7 +61,11 @@ public class PlayerController : NetworkBehaviour
 		}
 		Quaternion rotation = Quaternion.Euler (90, 0, 0);
 		Instantiate (deadBody, transform.position, rotation);
-		StartCoroutine (WaitToRespawn ());
+
+		if (this.lives >= 0) {
+			StartCoroutine (WaitToRespawn ());
+		}
+
 		SetEnabled (false);
 		ClearPowerups ();
 		ResetPlayerHealth ();
