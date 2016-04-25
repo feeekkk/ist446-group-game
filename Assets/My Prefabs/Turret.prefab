@@ -277,9 +277,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAmmo: 100
   maxAmmo: 100
-  fireRate: 0.3
+  fireRate: 0.2
   damage: 10
-  range: 300
+  range: 50
   accuracyScaleLimit: 1
   accuracyZ: 10
 --- !u!114 &11482342

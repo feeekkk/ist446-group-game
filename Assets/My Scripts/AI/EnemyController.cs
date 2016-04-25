@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
 	EnemyShoot enemyShootScript;
 	PlayerController pc;
 	Vector3 destinationSpawn;
+	bool animal = false;
 
 	// Use this for initialization
 	void Start ()
@@ -28,6 +29,7 @@ public class EnemyController : MonoBehaviour
 		pc = GetComponent<PlayerController> ();
 
 		if (pc.GetTeam ().Equals ("ANIMALS")) {
+			animal = true;
 			this.destinationSpawn = GameObject.Find ("Farmer Spawn").GetComponent<Spawner> ().GetSpawnPosition ();
 		} else {
 			this.destinationSpawn = GameObject.Find ("Animal Spawn").GetComponent<Spawner> ().GetSpawnPosition ();
@@ -41,15 +43,44 @@ public class EnemyController : MonoBehaviour
 			return;
 		}
 
+		if (animal) {
+			// #1 priority
+			if (CheckIfTurretInRange ()) {
+				return;
+			}
+		}
+
 		if (!CheckIfEnemyInRange ()) {
-			Debug.Log ("didnt find an enemy");
 			GoTowardsSpawn ();
 		}
 	}
 
+	bool CheckIfTurretInRange ()
+	{
+		nextCheck = Time.time + checkRate;
+
+		hitColliders = Physics.OverlapSphere (transform.position, detectionRadius, LayerMask.GetMask ("Turret"));
+
+		if (hitColliders.Length > 0) {
+			// we have detected a turret
+			float rand = Random.value;
+
+			if (rand > .4) {
+				Debug.Log ("moving towards turret");
+				// move towards player
+				myNavMeshAgent.SetDestination (hitColliders [0].transform.position);
+				enemyShootScript.Shoot ();
+				return true;
+			}
+		}
+		return false;
+	}
+
 	void GoTowardsSpawn ()
 	{
+		Debug.Log ("going towards spawn");
 		myNavMeshAgent.SetDestination (destinationSpawn);
+		nextCheck = Time.time + checkRate;
 	}
 
 	bool CheckIfEnemyInRange ()
