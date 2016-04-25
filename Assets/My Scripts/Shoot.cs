@@ -27,12 +27,12 @@ public class Shoot : MonoBehaviour
 		wds = gameObject.GetComponentsInChildren<WeaponData> ();
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
 		maxAmmoText = GameObject.Find ("Ammo Full Clip").GetComponent<Text> ();
-		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
+//		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
 		// disable all weapons but the first
 		for (int i = 1; i < wds.Length; i++) {
 			wds [i].gameObject.SetActive (false);
 		}
-		reloadSound = GameObject.Find ("Reload Sound").GetComponent<AudioSource> ();
+//		reloadSound = GameObject.Find ("Reload Sound").GetComponent<AudioSource> ();
 		reloadText = GameObject.Find ("Reload Text").GetComponent<Text> ();
 		allowShooting = true;
 		pc = GetComponent<PlayerController> ();
