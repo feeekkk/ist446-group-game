@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
 	GameObject blood4;
 	//public float increaseHealth;
 	Text healthLeft;
+	PlayerController pc;
 
 	// Use this for initialization
 	void Start ()
@@ -27,6 +28,11 @@ public class Health : MonoBehaviour
 		blood2.GetComponent<Image> ().enabled = false;
 		blood3.GetComponent<Image> ().enabled = false;
 		blood4.GetComponent<Image> ().enabled = false;
+
+		pc = GetComponent<PlayerController> ();
+		if (!pc) {
+			pc = GetComponentInParent<PlayerController> ();
+		}
 	}
 
 	void IncreaseHealth ()
@@ -42,15 +48,14 @@ public class Health : MonoBehaviour
 		if (health <= 0) {
 			Die ();
 		}	
-		if (gameObject.tag == "Player")
+		if (pc && pc.isLocalPlayer)
 			healthLeft.text = this.health.ToString ();
 	}
 
 	public void Die ()
 	{
-		// update gui
-		if (gameObject.tag == "Player") {
-			gameObject.GetComponent<PlayerController> ().Die ();
+		if (pc) {
+			pc.Die ();
 			return;
 		}
 		gameObject.SetActive (false);
@@ -66,7 +71,9 @@ public class Health : MonoBehaviour
 	{
 		this.health = resetHealth;
 		Mathf.Clamp (this.health, 0, this.maxHealth);
-		healthLeft.text = this.health.ToString ();
+		if (pc && pc.isLocalPlayer) {
+			healthLeft.text = this.health.ToString ();
+		}
 	}
 
 	public void Heal (float amount)
@@ -76,7 +83,7 @@ public class Health : MonoBehaviour
 
 	void Update ()
 	{
-		if (gameObject.tag == "Player") {
+		if (pc && pc.isLocalPlayer) {
 			if (health <= 100 && health > 70) {
 				blood1.GetComponent<Image> ().enabled = true;
 				blood2.GetComponent<Image> ().enabled = false;

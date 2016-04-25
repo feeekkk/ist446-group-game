@@ -30,12 +30,15 @@ public class Shoot : MonoBehaviour
 		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
 		// disable all weapons but the first
 		for (int i = 1; i < wds.Length; i++) {
-			Debug.Log ("disabled" + wds [i].name);
 			wds [i].gameObject.SetActive (false);
 		}
 		reloadSound = GameObject.Find ("Reload Sound").GetComponent<AudioSource> ();
 		reloadText = GameObject.Find ("Reload Text").GetComponent<Text> ();
 		allowShooting = true;
+		pc = GetComponent<PlayerController> ();
+		if (!pc) {
+			pc = GetComponentInParent<PlayerController> ();
+		}
 	}
 
 	/**
@@ -55,6 +58,10 @@ public class Shoot : MonoBehaviour
 			if (Physics.Raycast (transform.position, shotVector, out hit, wds [activeWeaponIndex].range)) {
 
 				if (hit.transform.GetComponent<Health> ()) {
+					if (hit.transform == transform) {
+						Debug.LogError ("we hit ourselves....");
+						return true;
+					}
 					// this collider has health, lets damage it
 					Debug.Log ("bullet hit " + hit.transform.name);
 					hit.transform.GetComponent<Health> ().TakeDamage (wds [activeWeaponIndex].damage);
@@ -89,15 +96,19 @@ public class Shoot : MonoBehaviour
 		// update ammo left
 		wds [activeWeaponIndex].currentAmmo--;
 
-		if (transform.parent && transform.parent.tag == "Player") {
+		if (pc.isLocalPlayer) {
 			UpdateGui ();
 		}
 	}
 
 	private void UpdateGui ()
 	{
-		ammoLeftText.text = wds [activeWeaponIndex].currentAmmo.ToString ();
-		maxAmmoText.text = wds [activeWeaponIndex].maxAmmo.ToString ();
+		if (pc && pc.isLocalPlayer) {
+			ammoLeftText.text = wds [activeWeaponIndex].currentAmmo.ToString ();
+			maxAmmoText.text = wds [activeWeaponIndex].maxAmmo.ToString ();
+		} else {
+			Debug.Log ("no pc");
+		}
 	}
 
 	private void UpdateNextFire ()

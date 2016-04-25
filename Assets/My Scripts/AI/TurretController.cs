@@ -34,7 +34,7 @@ public class TurretController : MonoBehaviour
 
 			if (hitColliders.Length > 0) {
 				// detected player
-				Debug.Log ("Turret Detected player");
+				//Debug.Log ("Turret Detected player");
 				RotateToPlayer ();
 				shootScript.FireWeapon ();
 			}
@@ -43,7 +43,7 @@ public class TurretController : MonoBehaviour
 
 	void RotateToPlayer ()
 	{
-		Debug.Log ("rotating");
+		//Debug.Log ("rotating");
 		GameObject target = hitColliders [0].gameObject;
 
 		//find the vector pointing from our position to the target

@@ -48,6 +48,7 @@
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\My Scripts\AI\EnemyChase.cs" />
      <Compile Include="Assets\My Scripts\AI\EnemyShoot.cs" />
+     <Compile Include="Assets\My Scripts\AI\TurretController.cs" />
      <Compile Include="Assets\My Scripts\GrenadeExplosion.cs" />
      <Compile Include="Assets\My Scripts\Health.cs" />
      <Compile Include="Assets\My Scripts\HostMenu.cs" />
@@ -72,7 +73,6 @@
      <Compile Include="Assets\PowerUp\Scripts\ScaleParticles.cs" />
      <Compile Include="Assets\PowerUp\Scripts\TakeablePowerUp.cs" />
      <Compile Include="Assets\PowerUp\Scripts\Utility\Singleton.cs" />
-     <Compile Include="Assets\TurretController.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

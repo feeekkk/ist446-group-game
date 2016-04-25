@@ -24,18 +24,23 @@ public class PlayerController : NetworkBehaviour
 	private int count;
 	// count of frames since damage last taken
 	private GameManager gm;
+	public bool isLocalPlayer = false;
 
 	void Start ()
 	{
+		if (gameObject.tag == "Player") {
+			isLocalPlayer = true;
+		}
 		livesText = GameObject.Find ("Num Lives").GetComponent<Text> ();
-		livesText.text = lives.ToString ();
-		int numPlayers = ClientScene.localPlayers.Count;
+		if (isLocalPlayer) {
+			livesText.text = lives.ToString ();
+		}
 
 		FirstPersonController fpc = GameObject.FindObjectOfType<FirstPersonController> ();
 		if (team == Teams.ANIMALS) {
 			fpc.m_RunSpeed = fpc.m_RunSpeed + 10;            
 		} 
-
+			
 		gm = GameObject.Find ("GAME_MANAGER").GetComponent<GameManager> ();
 	}
 
@@ -50,7 +55,9 @@ public class PlayerController : NetworkBehaviour
 	public void Die ()
 	{
 		this.lives--;
-		livesText.text = this.lives.ToString ();
+		if (isLocalPlayer) {
+			livesText.text = this.lives.ToString ();
+		}
 		Quaternion rotation = Quaternion.Euler (90, 0, 0);
 		Instantiate (deadBody, transform.position, rotation);
 		SetEnabled (false);
@@ -114,7 +121,9 @@ public class PlayerController : NetworkBehaviour
 	public void AddLife ()
 	{
 		this.lives++;
-		livesText.text = this.lives.ToString ();
+		if (isLocalPlayer) {
+			livesText.text = this.lives.ToString ();
+		}
 	}
 
 	public void AddRapidFire ()
@@ -129,7 +138,6 @@ public class PlayerController : NetworkBehaviour
 
 	public void IncreaseAccuracy ()
 	{
-		Debug.Log ("increased");
 		this.increasedAccuracy = true;
 	}
 
