@@ -15,6 +15,10 @@ public class Shoot : MonoBehaviour
 	public GameObject blood;
 	AudioSource audio;
 	public int activeWeaponIndex = 0;
+	Text reloadText;
+	bool allowShooting; 
+	AudioSource reloadSound;
+
 
 	// Use this for initialization
 	void Start ()
@@ -28,6 +32,9 @@ public class Shoot : MonoBehaviour
 		for (int i = 1; i < wds.Length; i++) {
 			wds [i].gameObject.SetActive (false);
 		}
+		reloadSound = GameObject.Find ("Reload Sound").GetComponent<AudioSource> ();
+		reloadText = GameObject.Find ("Reload Text").GetComponent<Text>();
+		allowShooting = true;
 	}
 
 	/**
@@ -40,7 +47,7 @@ public class Shoot : MonoBehaviour
 			return false;
 		}
 
-		if (Time.time > nextFire) {
+		if (Time.time > nextFire && allowShooting == true) {
 			Vector3 shotVector = CalculateShotVector ();
 
 			// check for hit
@@ -118,8 +125,25 @@ public class Shoot : MonoBehaviour
 
 	public void Reload ()
 	{
+		allowShooting = false;
+		playReload ();
+		reloadText.text = "RELOADING...".ToString();
+		Invoke("reloadTextChange", 3.0f);
 		wds [activeWeaponIndex].currentAmmo = wds [activeWeaponIndex].maxAmmo;
 		UpdateGui ();
+	}
+
+	void reloadTextChange(){
+		reloadText.text = "".ToString();
+		allowShooting = true;
+	}
+
+
+	void playReload ()
+	{
+		if (transform.parent && transform.parent.tag == "Player") {
+			reloadSound.Play ();
+		}
 	}
 
 	private void BulletFX (Vector3 startPos, Vector3 direction)
