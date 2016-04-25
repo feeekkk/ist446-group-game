@@ -5,7 +5,6 @@ public class PlayerInput : MonoBehaviour
 {
 	Shoot shootScript;
 	ShootGrenade shootGrenadeScript;
-	private int activeWeaponIndex = 0;
 
 	// Use this for initialization
 	void Start ()

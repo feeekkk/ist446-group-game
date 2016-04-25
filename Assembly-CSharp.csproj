@@ -45,10 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\My Scripts\AI\EnemyChase.cs" />
      <Compile Include="Assets\My Scripts\AI\EnemyShoot.cs" />
      <Compile Include="Assets\My Scripts\AI\TurretController.cs" />
+     <Compile Include="Assets\My Scripts\FarmerSpawnListener.cs" />
+     <Compile Include="Assets\My Scripts\GameManager.cs" />
      <Compile Include="Assets\My Scripts\GrenadeExplosion.cs" />
      <Compile Include="Assets\My Scripts\Health.cs" />
      <Compile Include="Assets\My Scripts\HostMenu.cs" />

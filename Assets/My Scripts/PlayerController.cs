@@ -16,7 +16,7 @@ public class PlayerController : NetworkBehaviour
 	;
 
 	public GameObject deadBody;
-	private Teams team = Teams.FARMERS;
+	public Teams team;
 	public int lives = 5;
 	Text livesText;
 	private bool rapidFire = false;
@@ -85,6 +85,11 @@ public class PlayerController : NetworkBehaviour
 		} else {
 			gm.IncrementFarmerScore ();
 		}
+	}
+
+	public string GetTeam ()
+	{
+		return team.ToString ();
 	}
 
 	void ClearPowerups ()
