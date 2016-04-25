@@ -6,13 +6,21 @@ using UnityEngine.UI;
 public class PlayerController : NetworkBehaviour
 {
 	[SerializeField] Material[] animalMaterials;
-	public enum Teams {FARMERS, ANIMALS};
+
+	public enum Teams
+	{
+		FARMERS,
+		ANIMALS}
+
+	;
+
 	private Teams team = Teams.FARMERS;
 	public int lives = 5;
 	Text livesText;
 	private bool rapidFire = false;
 	private bool increasedAccuracy = false;
-	private int count;	// count of frames since damage last taken
+	private int count;
+	// count of frames since damage last taken
 
 	void Start ()
 	{
@@ -119,7 +127,7 @@ public class PlayerController : NetworkBehaviour
 		return this.increasedAccuracy;
 	}
 
-	public float ReceiveDamage(float damage)
+	public float ReceiveDamage (float damage)
 	{
 		GetComponent<Health> ().health -= damage;
 		if (GetComponent<Health> ().health < 1) {

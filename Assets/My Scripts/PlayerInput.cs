@@ -5,19 +5,13 @@ public class PlayerInput : MonoBehaviour
 {
 	Shoot shootScript;
 	ShootGrenade shootGrenadeScript;
+	private int activeWeaponIndex = 0;
 
 	// Use this for initialization
 	void Start ()
 	{
 		shootScript = gameObject.GetComponentInParent<Shoot> ();
-		if (!shootScript) {
-			throw new UnityException ("No shoot script found in this game object");
-		}
-
 		shootGrenadeScript = gameObject.GetComponentInParent<ShootGrenade> ();
-		if (!shootGrenadeScript) {
-			Debug.LogError ("No shoot grenade script found");
-		}
 	}
 	
 	// Update is called once per frame
@@ -28,6 +22,10 @@ public class PlayerInput : MonoBehaviour
 
 	void CheckForInput ()
 	{
+		if (Input.GetButtonDown ("Switch Weapon")) {
+			shootScript.switchActiveWeapon ();
+		}
+
 		if (Input.GetButton ("Fire1")) {
 			shootScript.FireWeapon ();
 		}
