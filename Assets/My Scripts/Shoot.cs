@@ -128,7 +128,7 @@ public class Shoot : MonoBehaviour
 	{
 		allowShooting = false;
 		playReload ();
-		reloadText.text = "RELOADING...".ToString ();
+		reloadText.text = "RELOADIN'".ToString ();
 		Invoke ("reloadTextChange", 3.0f);
 		wds [activeWeaponIndex].currentAmmo = wds [activeWeaponIndex].maxAmmo;
 		UpdateGui ();
