@@ -39,7 +39,7 @@ public class PlayerController : NetworkBehaviour
 
 		FirstPersonController fpc = GameObject.FindObjectOfType<FirstPersonController> ();
 		if (team == Teams.ANIMALS) {
-			fpc.m_RunSpeed = fpc.m_RunSpeed + 10;            
+			fpc.m_RunSpeed = 10;            
 		} 
 			
 		gm = GameObject.Find ("GAME_MANAGER").GetComponent<GameManager> ();
