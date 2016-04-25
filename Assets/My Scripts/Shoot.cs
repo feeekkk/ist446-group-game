@@ -16,7 +16,7 @@ public class Shoot : MonoBehaviour
 	AudioSource audio;
 	public int activeWeaponIndex = 0;
 	Text reloadText;
-	bool allowShooting; 
+	bool allowShooting;
 	AudioSource reloadSound;
 
 
@@ -30,10 +30,11 @@ public class Shoot : MonoBehaviour
 		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
 		// disable all weapons but the first
 		for (int i = 1; i < wds.Length; i++) {
+			Debug.Log ("disabled" + wds [i].name);
 			wds [i].gameObject.SetActive (false);
 		}
 		reloadSound = GameObject.Find ("Reload Sound").GetComponent<AudioSource> ();
-		reloadText = GameObject.Find ("Reload Text").GetComponent<Text>();
+		reloadText = GameObject.Find ("Reload Text").GetComponent<Text> ();
 		allowShooting = true;
 	}
 
@@ -127,14 +128,15 @@ public class Shoot : MonoBehaviour
 	{
 		allowShooting = false;
 		playReload ();
-		reloadText.text = "RELOADING...".ToString();
-		Invoke("reloadTextChange", 3.0f);
+		reloadText.text = "RELOADIN'".ToString ();
+		Invoke ("reloadTextChange", 3.0f);
 		wds [activeWeaponIndex].currentAmmo = wds [activeWeaponIndex].maxAmmo;
 		UpdateGui ();
 	}
 
-	void reloadTextChange(){
-		reloadText.text = "".ToString();
+	void reloadTextChange ()
+	{
+		reloadText.text = "".ToString ();
 		allowShooting = true;
 	}
 

@@ -23,6 +23,7 @@ public class PlayerController : NetworkBehaviour
 	private bool increasedAccuracy = false;
 	private int count;
 	// count of frames since damage last taken
+	private GameManager gm;
 
 	void Start ()
 	{
@@ -40,6 +41,8 @@ public class PlayerController : NetworkBehaviour
 		if (team == Teams.ANIMALS) {
 			fpc.m_RunSpeed = fpc.m_RunSpeed + 10;            
 		} 
+
+		gm = GameObject.Find ("GAME_MANAGER").GetComponent<GameManager> ();
 	}
 
 	void Update ()
@@ -60,6 +63,12 @@ public class PlayerController : NetworkBehaviour
 		ClearPowerups ();
 		StartCoroutine (WaitToRespawn ());
 		ResetPlayerHealth ();
+
+		if (this.team == Teams.FARMERS) {
+			gm.IncrementAnimalScore ();
+		} else {
+			gm.IncrementFarmerScore ();
+		}
 	}
 
 	void ClearPowerups ()
