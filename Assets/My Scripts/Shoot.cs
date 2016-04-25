@@ -96,7 +96,7 @@ public class Shoot : MonoBehaviour
 		// update ammo left
 		wds [activeWeaponIndex].currentAmmo--;
 
-		if (pc.isLocalPlayer) {
+		if (pc && pc.isLocalPlayer) {
 			UpdateGui ();
 		}
 	}
