@@ -7,21 +7,27 @@ public class Shoot : MonoBehaviour
 	float nextFire = 0f;
 	RaycastHit hit;
 	Transform flash;
-	WeaponData wd;
+	WeaponData[] wds;
 	Text ammoLeftText;
+	Text maxAmmoText;
 	PlayerController pc;
 	public GameObject bulletFXPrefab;
 	public GameObject blood;
+	AudioSource audio;
+	public int activeWeaponIndex = 0;
 
 	// Use this for initialization
 	void Start ()
 	{
-		if (transform.Find ("M4A1")) {
-			flash = transform.Find ("M4A1").Find ("Muzzle Flash");
-		}
-		wd = gameObject.GetComponent<WeaponData> ();
+		flash = transform.Find ("Muzzle Flash");
+		wds = gameObject.GetComponentsInChildren<WeaponData> ();
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
-
+		maxAmmoText = GameObject.Find ("Ammo Full Clip").GetComponent<Text> ();
+		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
+		// disable all weapons but the first
+		for (int i = 1; i < wds.Length; i++) {
+			wds [i].gameObject.SetActive (false);
+		}
 	}
 
 	/**
@@ -29,7 +35,7 @@ public class Shoot : MonoBehaviour
      */
 	public bool FireWeapon ()
 	{
-		if (wd.currentAmmo <= 0) {
+		if (wds [activeWeaponIndex].currentAmmo <= 0) {
 			this.Reload ();
 			return false;
 		}
@@ -38,12 +44,12 @@ public class Shoot : MonoBehaviour
 			Vector3 shotVector = CalculateShotVector ();
 
 			// check for hit
-			if (Physics.Raycast (transform.position, shotVector, out hit, wd.range)) {
+			if (Physics.Raycast (transform.position, shotVector, out hit, wds [activeWeaponIndex].range)) {
 
 				if (hit.transform.GetComponent<Health> ()) {
 					// this collider has health, lets damage it
 					Debug.Log ("bullet hit " + hit.transform.name);
-					hit.transform.GetComponent<Health> ().TakeDamage (wd.damage);
+					hit.transform.GetComponent<Health> ().TakeDamage (wds [activeWeaponIndex].damage);
 					Instantiate (blood, hit.transform.position, hit.transform.rotation);
 				} else {
 					//Debug.Log ("shot missed");
@@ -53,6 +59,7 @@ public class Shoot : MonoBehaviour
 			DrawFX (shotVector);
 			UpdateNextFire ();
 			UpdateAmmoRemaining ();
+			playShot ();
 
 			return true;
 		}
@@ -63,8 +70,8 @@ public class Shoot : MonoBehaviour
 	//http://answers.unity3d.com/comments/467798/view.html
 	private Vector3 CalculateShotVector ()
 	{
-		Vector3 direction = Random.insideUnitCircle * wd.accuracyScaleLimit;
-		direction.z = wd.accuracyZ; // circle is at Z units 
+		Vector3 direction = Random.insideUnitCircle * wds [activeWeaponIndex].accuracyScaleLimit;
+		direction.z = wds [activeWeaponIndex].accuracyZ; // circle is at Z units 
 		direction = transform.TransformDirection (direction.normalized);
 		return direction;
 	}
@@ -72,17 +79,22 @@ public class Shoot : MonoBehaviour
 	private void UpdateAmmoRemaining ()
 	{
 		// update ammo left
-		wd.currentAmmo--;
+		wds [activeWeaponIndex].currentAmmo--;
 
 		if (transform.parent && transform.parent.tag == "Player") {
-			// update gui
-			ammoLeftText.text = wd.currentAmmo.ToString ();
+			UpdateGui ();
 		}
+	}
+
+	private void UpdateGui ()
+	{
+		ammoLeftText.text = wds [activeWeaponIndex].currentAmmo.ToString ();
+		maxAmmoText.text = wds [activeWeaponIndex].maxAmmo.ToString ();
 	}
 
 	private void UpdateNextFire ()
 	{
-		float fireRate = wd.fireRate;
+		float fireRate = wds [activeWeaponIndex].fireRate;
 
 		// check if shooter has rapid fire
 		if (transform.parent && transform.parent.GetComponent<PlayerController> ()) {
@@ -104,9 +116,10 @@ public class Shoot : MonoBehaviour
 		BulletFX (transform.position, direction);
 	}
 
-	void Reload ()
+	public void Reload ()
 	{
-		wd.currentAmmo = wd.maxAmmo;
+		wds [activeWeaponIndex].currentAmmo = wds [activeWeaponIndex].maxAmmo;
+		UpdateGui ();
 	}
 
 	private void BulletFX (Vector3 startPos, Vector3 direction)
@@ -114,7 +127,7 @@ public class Shoot : MonoBehaviour
 		Vector3 endPos;
 
 		if (!hit.transform) {
-			endPos = transform.position + (direction * wd.range);
+			endPos = transform.position + (direction * wds [activeWeaponIndex].range);
 		} else {
 			endPos = hit.transform.position;
 		}
@@ -134,5 +147,27 @@ public class Shoot : MonoBehaviour
 			Debug.LogError ("bulletFXPrefab missing");
 		}
 
+	}
+
+	void playShot ()
+	{
+		if (transform.parent && transform.parent.tag == "Player") {
+			audio.Play ();
+		}
+	}
+
+	public void switchActiveWeapon ()
+	{
+		wds [activeWeaponIndex].gameObject.SetActive (false);
+
+		if (activeWeaponIndex == wds.Length - 1) {
+			activeWeaponIndex = 0;
+		} else {
+			activeWeaponIndex++;
+		}
+
+		wds [activeWeaponIndex].gameObject.SetActive (true);
+
+		UpdateGui ();
 	}
 }

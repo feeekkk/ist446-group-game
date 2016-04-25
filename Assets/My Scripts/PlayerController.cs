@@ -2,17 +2,27 @@
 using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerController : NetworkBehaviour
 {
 	[SerializeField] Material[] animalMaterials;
-	public enum Teams {FARMERS, ANIMALS};
+
+	public enum Teams
+	{
+		FARMERS,
+		ANIMALS}
+
+	;
+
+	public GameObject deadBody;
 	private Teams team = Teams.FARMERS;
 	public int lives = 5;
 	Text livesText;
 	private bool rapidFire = false;
 	private bool increasedAccuracy = false;
-	private int count;	// count of frames since damage last taken
+	private int count;
+	// count of frames since damage last taken
 
 	void Start ()
 	{
@@ -26,6 +36,10 @@ public class PlayerController : NetworkBehaviour
 			materials [0] = animalMaterials [index];
 			//GetComponent<MeshRenderer>.materials = materials;
 		}
+		FirstPersonController fpc = GameObject.FindObjectOfType<FirstPersonController> ();
+		if (team == Teams.ANIMALS) {
+			fpc.m_RunSpeed = fpc.m_RunSpeed + 10;            
+		} 
 	}
 
 	void Update ()
@@ -40,6 +54,8 @@ public class PlayerController : NetworkBehaviour
 	{
 		this.lives--;
 		livesText.text = this.lives.ToString ();
+		Quaternion rotation = Quaternion.Euler (90, 0, 0);
+		Instantiate (deadBody, transform.position, rotation);
 		SetEnabled (false);
 		ClearPowerups ();
 		StartCoroutine (WaitToRespawn ());
@@ -119,7 +135,7 @@ public class PlayerController : NetworkBehaviour
 		return this.increasedAccuracy;
 	}
 
-	public float ReceiveDamage(float damage)
+	public float ReceiveDamage (float damage)
 	{
 		GetComponent<Health> ().health -= damage;
 		if (GetComponent<Health> ().health < 1) {

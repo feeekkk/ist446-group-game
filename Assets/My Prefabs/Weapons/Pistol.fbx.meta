@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: a4e976d1ded4a4c3a9a1cb48f68c650a
+timeCreated: 1461545708
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Barrel
+    100002: Bolt1
+    100004: Bolt10
+    100006: Bolt11
+    100008: Bolt12
+    100010: Bolt2
+    100012: Bolt3
+    100014: Bolt4
+    100016: Bolt5
+    100018: Bolt6
+    100020: Bolt7
+    100022: Bolt8
+    100024: Bolt9
+    100026: Bolts
+    100028: //RootNode
+    100030: Cylinder
+    100032: Cylinder back
+    100034: Frame backstrap
+    100036: Grip
+    100038: Hammer
+    100040: Hinge
+    100042: Loading Lever
+    100044: Receiver
+    100046: Trigger
+    400000: Barrel
+    400002: Bolt1
+    400004: Bolt10
+    400006: Bolt11
+    400008: Bolt12
+    400010: Bolt2
+    400012: Bolt3
+    400014: Bolt4
+    400016: Bolt5
+    400018: Bolt6
+    400020: Bolt7
+    400022: Bolt8
+    400024: Bolt9
+    400026: Bolts
+    400028: //RootNode
+    400030: Cylinder
+    400032: Cylinder back
+    400034: Frame backstrap
+    400036: Grip
+    400038: Hammer
+    400040: Hinge
+    400042: Loading Lever
+    400044: Receiver
+    400046: Trigger
+    2300000: Barrel
+    2300002: Bolt1
+    2300004: Bolt10
+    2300006: Bolt11
+    2300008: Bolt12
+    2300010: Bolt2
+    2300012: Bolt3
+    2300014: Bolt4
+    2300016: Bolt5
+    2300018: Bolt6
+    2300020: Bolt7
+    2300022: Bolt8
+    2300024: Bolt9
+    2300026: Cylinder
+    2300028: Cylinder back
+    2300030: Frame backstrap
+    2300032: Grip
+    2300034: Hammer
+    2300036: Hinge
+    2300038: Loading Lever
+    2300040: Receiver
+    2300042: Trigger
+    3300000: Barrel
+    3300002: Bolt1
+    3300004: Bolt10
+    3300006: Bolt11
+    3300008: Bolt12
+    3300010: Bolt2
+    3300012: Bolt3
+    3300014: Bolt4
+    3300016: Bolt5
+    3300018: Bolt6
+    3300020: Bolt7
+    3300022: Bolt8
+    3300024: Bolt9
+    3300026: Cylinder
+    3300028: Cylinder back
+    3300030: Frame backstrap
+    3300032: Grip
+    3300034: Hammer
+    3300036: Hinge
+    3300038: Loading Lever
+    3300040: Receiver
+    3300042: Trigger
+    4300000: Bolt12
+    4300002: Bolt11
+    4300004: Bolt10
+    4300006: Bolt9
+    4300008: Bolt8
+    4300010: Bolt7
+    4300012: Bolt6
+    4300014: Bolt5
+    4300016: Bolt4
+    4300018: Bolt3
+    4300020: Bolt1
+    4300022: Bolt2
+    4300024: Trigger
+    4300026: Loading Lever
+    4300028: Barrel
+    4300030: Cylinder
+    4300032: Hinge
+    4300034: Hammer
+    4300036: Cylinder back
+    4300038: Receiver
+    4300040: Frame backstrap
+    4300042: Grip
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

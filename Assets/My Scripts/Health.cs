@@ -19,17 +19,18 @@ public class Health : MonoBehaviour
 		healthLeft = GameObject.Find ("Health Number").GetComponent<Text> ();
 		InvokeRepeating ("IncreaseHealth", 10.0f, 10.0f);
 		Mathf.Clamp (this.health, 0, maxHealth);
-		blood1 = GameObject.Find("BloodEmpty");
-		blood2 = GameObject.Find("Blood1");
-		blood3 = GameObject.Find("Blood2");
-		blood4 = GameObject.Find("Blood3");
+		blood1 = GameObject.Find ("BloodEmpty");
+		blood2 = GameObject.Find ("Blood1");
+		blood3 = GameObject.Find ("Blood2");
+		blood4 = GameObject.Find ("Blood3");
 		blood1.GetComponent<Image> ().enabled = true;
 		blood2.GetComponent<Image> ().enabled = false;
 		blood3.GetComponent<Image> ().enabled = false;
 		blood4.GetComponent<Image> ().enabled = false;
 	}
 
-	void IncreaseHealth(){
+	void IncreaseHealth ()
+	{
 		if (this.health < this.maxHealth)
 			this.health += 10.0f;
 	}
@@ -73,7 +74,8 @@ public class Health : MonoBehaviour
 		this.health = amount;
 	}
 
-	void Update(){
+	void Update ()
+	{
 		if (gameObject.tag == "Player") {
 			if (health <= 100 && health > 70) {
 				blood1.GetComponent<Image> ().enabled = true;
