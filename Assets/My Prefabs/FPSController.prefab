@@ -934,6 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletFXPrefab: {fileID: 106184, guid: 45c2790f3052ddf43978625598d477b1, type: 2}
+  blood: {fileID: 0}
 --- !u!114 &11420980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1019,6 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2ac7485c0db4b43954af7c89318d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animalMaterials: []
   lives: 5
 --- !u!114 &11488242
 MonoBehaviour:
