@@ -8,6 +8,6 @@ public class WeaponData : MonoBehaviour
 	public float fireRate = 0.3f;
 	public float damage = 25f;
 	public float range = 300f;
-	public float accuracyScaleLimit = 1;
-	public float accuracyZ = 10;
+	public float accuracyScaleLimit = .5f;
+	public float accuracyZ = 1;
 }
