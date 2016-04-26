@@ -4386,7 +4386,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 193584, guid: 03e203a2bf81d4595a1c7c41c62f03a1, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108884, guid: 03e203a2bf81d4595a1c7c41c62f03a1, type: 2}
+      propertyPath: m_Name
+      value: Game Over Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03e203a2bf81d4595a1c7c41c62f03a1, type: 2}
@@ -8131,8 +8135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794279568167d45c9beccf8b63ede313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 100420, guid: 0d5a26f1e494c784680ce7360e31323e, type: 2}
-  amount: 0
+  objectToSpawn: {fileID: 159236, guid: 0d5a26f1e494c784680ce7360e31323e, type: 2}
+  amount: 1
   spawnRadius: 10
 --- !u!1 &1406387485
 GameObject:

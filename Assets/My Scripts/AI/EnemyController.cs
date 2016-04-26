@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
 	{
 		myNavMeshAgent = GetComponent<NavMeshAgent> ();
 		checkRate = Random.Range (0.8f, 1.2f);
-		enemyShootScript = gameObject.GetComponent<EnemyShoot> ();
+		enemyShootScript = gameObject.GetComponentInChildren<EnemyShoot> ();
 
 		if (!enemyShootScript) {
 			throw new UnityException ("no enemy shoot script found");

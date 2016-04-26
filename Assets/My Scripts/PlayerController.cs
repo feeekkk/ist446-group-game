@@ -122,8 +122,8 @@ public class PlayerController : NetworkBehaviour
 		}
 			
 		gameObject.GetComponent<Health> ().enabled = enabled;
-		gameObject.GetComponent<Shoot> ().enabled = enabled;
-		gameObject.GetComponent<Shoot> ().SetActiveWeapon (enabled);
+		gameObject.GetComponentInChildren<Shoot> ().enabled = enabled;
+		gameObject.GetComponentInChildren<Shoot> ().SetActiveWeapon (enabled);
 	}
 
 	public void Respawn ()
