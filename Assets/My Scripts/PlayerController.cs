@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 	// count of frames since damage last taken
 	private GameManager gm;
 	public bool isLocalPlayer = false;
-	private Spawner spawn;
+	private GameObject[] spawns;
 
 	void Start ()
 	{
@@ -44,10 +44,10 @@ public class PlayerController : MonoBehaviour
 
 		switch (team) {
 		case Teams.ANIMALS:
-			spawn = GameObject.Find ("Animal Spawn").GetComponent<Spawner> ();
+			spawns = GameObject.FindGameObjectsWithTag ("Animal Spawn");
 			break;
 		case Teams.FARMERS:
-			spawn = GameObject.Find ("Farmer Spawn").GetComponent<Spawner> ();
+			spawns = GameObject.FindGameObjectsWithTag ("Farmer Spawn");
 			break;
 		}
 	}
@@ -126,7 +126,20 @@ public class PlayerController : MonoBehaviour
 
 	public void Respawn ()
 	{
-		transform.position = spawn.GetSpawnPosition ();
+		if (spawns.Length > 1) {
+			// pick random animal spawn
+			float rand = Random.value;
+			if (rand < 0.3) {
+				transform.position = spawns [0].GetComponent<Spawner> ().GetSpawnPosition ();
+			} else if (rand < 0.6) {
+				transform.position = spawns [1].GetComponent<Spawner> ().GetSpawnPosition ();
+			} else {
+				transform.position = spawns [2].GetComponent<Spawner> ().GetSpawnPosition ();
+			}
+		} else {
+			transform.position = spawns [0].GetComponent<Spawner> ().GetSpawnPosition ();
+		}
+
 		SetEnabled (true);
 		Debug.Log ("respawning: " + gameObject.name);
 	}
