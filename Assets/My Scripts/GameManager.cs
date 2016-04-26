@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	private int animalScore = 50;
+	private int animalScore = 100;
 	private int farmerScore = 50;
 	private Text animalText;
 	private Text farmerText;

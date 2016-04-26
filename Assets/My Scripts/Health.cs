@@ -10,15 +10,16 @@ public class Health : MonoBehaviour
 	GameObject blood2;
 	GameObject blood3;
 	GameObject blood4;
-	//public float increaseHealth;
 	Text healthLeft;
 	PlayerController pc;
+	float timeToBeginHealing;
+	float timeUntilBeginHealing = 5f;
+	// 5 seconds without being hit
 
 	// Use this for initialization
 	void Start ()
 	{
 		healthLeft = GameObject.Find ("Health Number").GetComponent<Text> ();
-		InvokeRepeating ("IncreaseHealth", 10.0f, 10.0f);
 		Mathf.Clamp (this.health, 0, maxHealth);
 		blood1 = GameObject.Find ("BloodEmpty");
 		blood2 = GameObject.Find ("Blood1");
@@ -35,12 +36,6 @@ public class Health : MonoBehaviour
 		}
 	}
 
-	void IncreaseHealth ()
-	{
-		if (this.health < this.maxHealth)
-			this.health += 10.0f;
-	}
-
 	public void TakeDamage (float amount)
 	{
 		health -= amount;
@@ -50,6 +45,8 @@ public class Health : MonoBehaviour
 		}	
 		if (pc && pc.isLocalPlayer)
 			healthLeft.text = this.health.ToString ();
+
+		timeToBeginHealing = Time.time + timeUntilBeginHealing;
 	}
 
 	public void Die ()
@@ -78,17 +75,23 @@ public class Health : MonoBehaviour
 
 	public void Heal (float amount)
 	{
-		this.health = amount;
+		this.health += amount;
+		if (pc && pc.isLocalPlayer) {
+			healthLeft.text = this.health.ToString ();
+		}
 	}
 
 	void Update ()
 	{
 		if (pc && pc.isLocalPlayer) {
-			if (health <= 100 && health > 70) {
-				blood1.GetComponent<Image> ().enabled = true;
+			if (health >= 100) {
+				blood1.GetComponent<Image> ().enabled = false;
 				blood2.GetComponent<Image> ().enabled = false;
 				blood3.GetComponent<Image> ().enabled = false;
 				blood4.GetComponent<Image> ().enabled = false;
+			}
+			if (health < 100 && health > 70) {
+				blood1.GetComponent<Image> ().enabled = true;
 			} 
 			if (health <= 70 && health > 50) {
 				blood2.GetComponent<Image> ().enabled = true;
@@ -99,6 +102,11 @@ public class Health : MonoBehaviour
 			if (health <= 20) {
 				blood4.GetComponent<Image> ().enabled = true;
 			}
+		}
+
+		if (health < 100 && (Time.time > timeToBeginHealing)) {
+			Heal (1);
+			Debug.Log ("healing: " + health);
 		}
 	}
 }

@@ -52,14 +52,6 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void Update ()
-	{
-		count++;
-		if (GetComponent<Health> ().health < GetComponent<Health> ().maxHealth && count > 300) {
-			GetComponent<Health> ().Heal (1);
-		}
-	}
-
 	public void Die ()
 	{
 		Debug.Log ("ded: " + gameObject.name + " | team: " + this.team);
@@ -201,13 +193,8 @@ public class PlayerController : MonoBehaviour
 		return this.increasedAccuracy;
 	}
 
-	public float ReceiveDamage (float damage)
+	public void ReceiveDamage (float damage)
 	{
-		GetComponent<Health> ().health -= damage;
-		if (GetComponent<Health> ().health < 1) {
-			Die ();
-		}
-		count = 0;
-		return GetComponent<Health> ().health;
+		GetComponent<Health> ().TakeDamage (damage);
 	}
 }
