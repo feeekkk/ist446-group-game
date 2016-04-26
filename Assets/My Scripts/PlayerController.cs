@@ -62,7 +62,9 @@ public class PlayerController : MonoBehaviour
 
 	public void Die ()
 	{
-		Debug.Log ("ded: " + gameObject.name);
+		Debug.Log ("ded: " + gameObject.name + " | team: " + this.team);
+		Debug.Log ("farmer: " + (this.team == Teams.FARMERS));
+
 		this.lives--;
 		if (isLocalPlayer) {
 			livesText.text = this.lives.ToString ();
@@ -79,9 +81,9 @@ public class PlayerController : MonoBehaviour
 		ResetPlayerHealth ();
 
 		if (this.team == Teams.FARMERS) {
-			gm.IncrementAnimalScore ();
+			gm.DecrementFarmerScore ();
 		} else {
-			gm.IncrementFarmerScore ();
+			gm.DecrementAnimalScore ();
 		}
 	}
 

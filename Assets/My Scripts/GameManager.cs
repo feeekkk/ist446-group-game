@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 		Instantiate (player, spawn, Quaternion.identity);
 	}
 
-	public void IncrementAnimalScore ()
+	public void DecrementAnimalScore ()
 	{
 		animalScore--;
 		animalText.text = animalScore.ToString ();
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void IncrementFarmerScore ()
+	public void DecrementFarmerScore ()
 	{
 		farmerScore--;
 		farmerText.text = farmerScore.ToString ();
