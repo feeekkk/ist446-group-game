@@ -8045,8 +8045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794279568167d45c9beccf8b63ede313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 112566, guid: 0d5a26f1e494c784680ce7360e31323e, type: 2}
-  amount: 1
+  objectToSpawn: {fileID: 100420, guid: 0d5a26f1e494c784680ce7360e31323e, type: 2}
+  amount: 5
   spawnRadius: 10
 --- !u!1 &1406387485
 GameObject:
