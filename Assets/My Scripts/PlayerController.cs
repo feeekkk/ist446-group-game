@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start ()
 	{
-		if (gameObject.tag == "Player") {
+		if (gameObject.name.Equals ("Player(Clone)")) {
 			isLocalPlayer = true;
 		}
 		livesText = GameObject.Find ("Num Lives").GetComponent<Text> ();

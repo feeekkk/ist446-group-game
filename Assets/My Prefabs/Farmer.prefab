@@ -102,7 +102,7 @@ GameObject:
   - 82: {fileID: 8213634}
   m_Layer: 10
   m_Name: Farmer
-  m_TagString: Untagged
+  m_TagString: Farmer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -786,7 +786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2ac7485c0db4b43954af7c89318d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalMaterials: []
   deadBody: {fileID: 113180, guid: 1a341bdcae10a422cbd0aac3d1e03503, type: 2}
   team: 0
   lives: 5

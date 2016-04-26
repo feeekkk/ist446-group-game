@@ -78,7 +78,6 @@ public class EnemyController : MonoBehaviour
 
 	void GoTowardsSpawn ()
 	{
-		Debug.Log ("going towards spawn");
 		myNavMeshAgent.SetDestination (destinationSpawn);
 		nextCheck = Time.time + checkRate;
 	}
@@ -94,18 +93,15 @@ public class EnemyController : MonoBehaviour
 			float rand = Random.value;
 
 			if (rand > .4) {
-				Debug.Log ("moving towards player");
 				// move towards player
 				myNavMeshAgent.SetDestination (hitColliders [0].transform.position);
 
 				if (rand > .6) {
-					Debug.Log ("and shooting at player");
 					enemyShootScript.Shoot ();
 				}
 				return true;
 			}
 
-			Debug.Log ("moving towards barn");
 			LookAtTarget (hitColliders [0].transform.position);
 			enemyShootScript.Shoot ();
 		}

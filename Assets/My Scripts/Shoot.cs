@@ -57,6 +57,11 @@ public class Shoot : MonoBehaviour
 			// check for hit
 			if (Physics.Raycast (transform.position, shotVector, out hit, wds [activeWeaponIndex].range)) {
 				if (hit.transform.GetComponent<Health> ()) {
+					Debug.Log (hit.transform.tag + " | " + pc.transform.tag);
+					if (hit.transform.CompareTag (pc.transform.tag)) {
+						Debug.Log ("hit team mate. getting out");
+						return true;
+					}
 					// this collider has health, lets damage it
 					Debug.Log ("bullet hit " + hit.transform.name);
 					hit.transform.GetComponent<Health> ().TakeDamage (wds [activeWeaponIndex].damage);

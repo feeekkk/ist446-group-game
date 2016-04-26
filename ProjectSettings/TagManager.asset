@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Animal Spawn
   - Farmer Spawn
+  - Animal
+  - Farmer
   layers:
   - Default
   - TransparentFX
