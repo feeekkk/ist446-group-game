@@ -85,6 +85,9 @@ public class Shoot : MonoBehaviour
 	//http://answers.unity3d.com/comments/467798/view.html
 	private Vector3 CalculateShotVector ()
 	{
+		if (pc && pc.isLocalPlayer) {
+			return transform.forward; // fuck it, make all player weapons perfectly accurate. game was too hard
+		}
 		Vector3 direction = Random.insideUnitCircle * wds [activeWeaponIndex].accuracyScaleLimit;
 		direction.z = wds [activeWeaponIndex].accuracyZ; // circle is at Z units 
 		direction = transform.TransformDirection (direction.normalized);
@@ -191,7 +194,7 @@ public class Shoot : MonoBehaviour
 
 	void playShot ()
 	{
-		if (pc && pc.isLocalPlayer){
+		if (pc && pc.isLocalPlayer) {
 			audio.Play ();
 		}
 	}
