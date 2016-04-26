@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerController : MonoBehaviour
 {
-	[SerializeField] Material[] animalMaterials;
 
 	public enum Teams
 	{
