@@ -226,7 +226,7 @@ GameObject:
   - 114: {fileID: 11486166}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Farmer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2591,7 +2591,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105770}
-  m_LocalRotation: {x: -0.12900811, y: 0.7110251, z: 0.13532032, w: 0.67785585}
+  m_LocalRotation: {x: -0.12900813, y: 0.7110252, z: 0.13532034, w: 0.6778559}
   m_LocalPosition: {x: 0.108369485, y: -0.06856059, z: 0.014612337}
   m_LocalScale: {x: 0.6255082, y: 1, z: 1}
   m_Children: []
@@ -6300,10 +6300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2ac7485c0db4b43954af7c89318d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalMaterials:
-  - {fileID: 2100000, guid: 587988c79d00abf46a92756a95218995, type: 2}
-  - {fileID: 2100000, guid: abfbaf7c500713641a87a7bb7700ad85, type: 2}
-  - {fileID: 2100000, guid: 95fd3b2dfe84ea24293d0a7fd58b968d, type: 2}
   deadBody: {fileID: 113180, guid: 1a341bdcae10a422cbd0aac3d1e03503, type: 2}
   team: 0
   lives: 5

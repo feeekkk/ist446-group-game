@@ -24,7 +24,12 @@ public class Shoot : MonoBehaviour
 	void Start ()
 	{
 		flash = transform.Find ("Muzzle Flash");
-		wds = transform.parent.GetComponentsInChildren<WeaponData> ();
+		if (transform.parent) {
+			wds = transform.parent.GetComponentsInChildren<WeaponData> ();
+		} else {
+			// prolly a turret 
+			wds = transform.GetComponents<WeaponData> ();
+		}
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
 		maxAmmoText = GameObject.Find ("Ammo Full Clip").GetComponent<Text> ();
 		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
@@ -57,8 +62,13 @@ public class Shoot : MonoBehaviour
 			// check for hit
 			if (Physics.Raycast (transform.position, shotVector, out hit, wds [activeWeaponIndex].range)) {
 				if (hit.transform.GetComponent<Health> ()) {
-					Debug.Log (hit.transform.tag + " | " + pc.transform.tag);
-					if (hit.transform.CompareTag (pc.transform.tag)) {
+					string tag;
+					if (pc) {
+						tag = pc.transform.tag;
+					} else {
+						tag = transform.tag;
+					}
+					if (hit.transform.CompareTag (tag)) {
 						Debug.Log ("hit team mate. getting out");
 						return true;
 					}
