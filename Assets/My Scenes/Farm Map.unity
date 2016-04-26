@@ -2368,6 +2368,10 @@ Prefab:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 11478728, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
   m_IsPrefabParent: 0
@@ -3773,6 +3777,10 @@ Prefab:
       propertyPath: m_Name
       value: Turret (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11478728, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
   m_IsPrefabParent: 0
@@ -4036,6 +4044,10 @@ Prefab:
     - target: {fileID: 113420, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
       propertyPath: m_Name
       value: Turret (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478728, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
@@ -4572,7 +4584,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11425620, guid: 03e203a2bf81d4595a1c7c41c62f03a1, type: 2}
       propertyPath: m_Text
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03e203a2bf81d4595a1c7c41c62f03a1, type: 2}
@@ -5530,6 +5542,10 @@ Prefab:
     - target: {fileID: 113420, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478728, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
@@ -8277,7 +8293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 177578, guid: 0d5a26f1e494c784680ce7360e31323e, type: 2}
-  amount: 1
+  amount: 7
   spawnRadius: 10
 --- !u!1 &1406387485
 GameObject:
@@ -8324,7 +8340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 179506, guid: 33c42a7b00b54f44aa7aad27a0b97f13, type: 2}
-  amount: 0
+  amount: 4
   spawnRadius: 3
 --- !u!23 &1406387488
 MeshRenderer:
@@ -11170,6 +11186,10 @@ Prefab:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 11478728, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
   m_IsPrefabParent: 0
@@ -12038,6 +12058,10 @@ Prefab:
     - target: {fileID: 113420, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11478728, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}
+      propertyPath: damage
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9beacdbfcf96b4a578afc5b4a023a087, type: 2}

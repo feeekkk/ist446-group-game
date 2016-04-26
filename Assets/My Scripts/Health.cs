@@ -92,12 +92,18 @@ public class Health : MonoBehaviour
 			}
 			if (health < 100 && health > 70) {
 				blood1.GetComponent<Image> ().enabled = true;
+				blood2.GetComponent<Image> ().enabled = false;
+				blood3.GetComponent<Image> ().enabled = false;
+				blood4.GetComponent<Image> ().enabled = false;
 			} 
 			if (health <= 70 && health > 50) {
 				blood2.GetComponent<Image> ().enabled = true;
+				blood3.GetComponent<Image> ().enabled = false;
+				blood4.GetComponent<Image> ().enabled = false;
 			} 
 			if (health <= 50 && health > 20) {
 				blood3.GetComponent<Image> ().enabled = true;
+				blood4.GetComponent<Image> ().enabled = false;
 			} 
 			if (health <= 20) {
 				blood4.GetComponent<Image> ().enabled = true;
