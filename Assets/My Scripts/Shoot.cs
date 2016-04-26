@@ -151,7 +151,7 @@ public class Shoot : MonoBehaviour
 		if (pc && pc.isLocalPlayer) {
 			reloadText.text = "RELOADIN'".ToString ();
 		}
-		Invoke ("reloadTextChange", 3.0f);
+		Invoke ("reloadTextChange", wds [activeWeaponIndex].reloadTime);
 		wds [activeWeaponIndex].currentAmmo = wds [activeWeaponIndex].maxAmmo;
 		UpdateGui ();
 	}

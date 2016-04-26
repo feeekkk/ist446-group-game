@@ -10,4 +10,6 @@ public class WeaponData : MonoBehaviour
 	public float range = 300f;
 	public float accuracyScaleLimit = .5f;
 	public float accuracyZ = 1;
+	public float reloadTime = 3.0f;
+	// seconds
 }
