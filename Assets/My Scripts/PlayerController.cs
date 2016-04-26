@@ -98,7 +98,13 @@ public class PlayerController : MonoBehaviour
 
 	IEnumerator WaitToRespawn ()
 	{
-		yield return new WaitForSeconds (5);
+		// only animals wait to respawn
+		if (team == Teams.FARMERS) {
+			yield return new WaitForSeconds (0);
+		} else {
+			yield return new WaitForSeconds (10);
+		}
+
 		Respawn ();
 	}
 
