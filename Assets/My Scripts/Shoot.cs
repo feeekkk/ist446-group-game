@@ -55,12 +55,12 @@ public class Shoot : MonoBehaviour
 			Vector3 shotVector = CalculateShotVector ();
 
 			// check for hit
-			if (Physics.Raycast (wds [activeWeaponIndex].transform.position, shotVector, out hit, wds [activeWeaponIndex].range)) {
+			if (Physics.Raycast (transform.position, shotVector, out hit, wds [activeWeaponIndex].range)) {
 				if (hit.transform.GetComponent<Health> ()) {
 					// this collider has health, lets damage it
 					Debug.Log ("bullet hit " + hit.transform.name);
 					hit.transform.GetComponent<Health> ().TakeDamage (wds [activeWeaponIndex].damage);
-					Instantiate (blood, hit.transform.position, hit.transform.rotation);
+					Instantiate (blood, hit.point, hit.transform.rotation);
 				} else {
 					Debug.Log (hit.transform.name);
 				}
@@ -81,7 +81,7 @@ public class Shoot : MonoBehaviour
 	private Vector3 CalculateShotVector ()
 	{
 		if (pc && pc.isLocalPlayer) {
-			return wds [activeWeaponIndex].transform.forward; // fuck it, make all player weapons perfectly accurate. game was too hard
+			return transform.forward; // fuck it, make all player weapons perfectly accurate. game was too hard
 		}
 		Vector3 direction = Random.insideUnitCircle * wds [activeWeaponIndex].accuracyScaleLimit;
 		direction.z = wds [activeWeaponIndex].accuracyZ; // circle is at Z units 
@@ -104,8 +104,6 @@ public class Shoot : MonoBehaviour
 		if (pc && pc.isLocalPlayer) {
 			ammoLeftText.text = wds [activeWeaponIndex].currentAmmo.ToString ();
 			maxAmmoText.text = wds [activeWeaponIndex].maxAmmo.ToString ();
-		} else {
-			Debug.Log ("no pc");
 		}
 	}
 
@@ -129,7 +127,7 @@ public class Shoot : MonoBehaviour
 		if (flash) {
 			flash.GetComponent<Animation> ().Play ();
 		}
-		Vector3 pos = wds [activeWeaponIndex].transform.position;
+		Vector3 pos = transform.position;
 		BulletFX (pos, direction);
 	}
 
@@ -164,7 +162,7 @@ public class Shoot : MonoBehaviour
 		Vector3 endPos;
 
 		if (!hit.transform) {
-			endPos = wds [activeWeaponIndex].transform.position + (direction * wds [activeWeaponIndex].range);
+			endPos = transform.position + (direction * wds [activeWeaponIndex].range);
 		} else {
 			endPos = hit.point;
 		}
