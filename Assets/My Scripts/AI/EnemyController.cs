@@ -14,12 +14,14 @@ public class EnemyController : MonoBehaviour
 	PlayerController pc;
 	Vector3 destinationSpawn;
 	bool animal = false;
+	bool hasTarget = false;
+	Vector3 targetDest;
 
 	// Use this for initialization
 	void Start ()
 	{
 		myNavMeshAgent = GetComponent<NavMeshAgent> ();
-		checkRate = Random.Range (0.8f, 1.2f);
+		checkRate = Random.Range (5f, 10f);
 		enemyShootScript = gameObject.GetComponentInChildren<EnemyShoot> ();
 
 		if (!enemyShootScript) {
@@ -49,7 +51,15 @@ public class EnemyController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Time.time < nextCheck) {
+		if (Time.time > nextCheck) {
+			hasTarget = false;
+			Debug.Log ("getting new target");
+			nextCheck = Time.time + checkRate;
+		}
+
+		if (hasTarget) {
+			myNavMeshAgent.SetDestination (targetDest);
+			enemyShootScript.Shoot ();
 			return;
 		}
 
@@ -67,8 +77,6 @@ public class EnemyController : MonoBehaviour
 
 	bool CheckIfTurretInRange ()
 	{
-		nextCheck = Time.time + checkRate;
-
 		hitColliders = Physics.OverlapSphere (transform.position, detectionRadius, LayerMask.GetMask ("Turret"));
 
 		if (hitColliders.Length > 0) {
@@ -76,10 +84,12 @@ public class EnemyController : MonoBehaviour
 			float rand = Random.value;
 
 			if (rand > .4) {
-				Debug.Log ("moving towards turret");
+				//Debug.Log ("moving towards turret");
 				// move towards player
-				myNavMeshAgent.SetDestination (hitColliders [0].transform.position);
-				enemyShootScript.Shoot ();
+				int ran = Random.Range (0, hitColliders.Length);
+				targetDest = hitColliders [ran].transform.position;
+				myNavMeshAgent.SetDestination (targetDest);
+				hasTarget = true;
 				return true;
 			}
 		}
@@ -89,30 +99,29 @@ public class EnemyController : MonoBehaviour
 	void GoTowardsSpawn ()
 	{
 		myNavMeshAgent.SetDestination (destinationSpawn);
-		nextCheck = Time.time + checkRate;
+		this.hasTarget = true;
+		targetDest = destinationSpawn;
 	}
 
 	bool CheckIfEnemyInRange ()
 	{
-		nextCheck = Time.time + checkRate;
 
 		hitColliders = Physics.OverlapSphere (transform.position, detectionRadius, detectionLayer);
 
 		if (hitColliders.Length > 0) {
-			// we have detected the player
-			float rand = Random.value;
+			// we have detected enemy
+			float ran = Random.value;
 
-			if (rand > .4) {
-				// move towards player
-				myNavMeshAgent.SetDestination (hitColliders [0].transform.position);
-
-				if (rand > .6) {
-					enemyShootScript.Shoot ();
-				}
+			int rand = Random.Range (0, hitColliders.Length);
+			if (ran > .3) {
+				// move towards whoever
+				targetDest = hitColliders [rand].transform.position;
+				myNavMeshAgent.SetDestination (targetDest);
+				hasTarget = true;
 				return true;
 			}
-
-			LookAtTarget (hitColliders [0].transform.position);
+			// dont run to them but shoot at them
+			LookAtTarget (hitColliders [rand].transform.position);
 			enemyShootScript.Shoot ();
 		}
 		return false;
