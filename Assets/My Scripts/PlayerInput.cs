@@ -5,12 +5,13 @@ public class PlayerInput : MonoBehaviour
 {
 	Shoot shootScript;
 	ShootGrenade shootGrenadeScript;
+	Camera c;
 
 	// Use this for initialization
 	void Start ()
 	{
 		shootScript = gameObject.GetComponentInChildren<Shoot> ();
-		shootGrenadeScript = gameObject.GetComponentInParent<ShootGrenade> ();
+		c = transform.GetComponentInChildren<Camera> ();
 	}
 	
 	// Update is called once per frame
@@ -29,8 +30,10 @@ public class PlayerInput : MonoBehaviour
 			shootScript.FireWeapon ();
 		}
 
-		if (Input.GetButton ("Fire2") && shootGrenadeScript) {
-			shootGrenadeScript.SpawnGrenade ();
+		if (Input.GetButton ("Fire2")) {
+			c.fieldOfView = 30;
+		} else {
+			c.fieldOfView = 60; // reset it
 		}
 
 		if (Input.GetButtonDown ("Reload")) {
