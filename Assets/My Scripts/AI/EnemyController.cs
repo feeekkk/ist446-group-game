@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 	float checkRate;
 	// distribute the decision making between lots of AI
 	float nextCheck;
-	float detectionRadius = 50f;
+	float detectionRadius = 150f;
 	NavMeshAgent myNavMeshAgent;
 	EnemyShoot enemyShootScript;
 	PlayerController pc;
@@ -30,9 +30,19 @@ public class EnemyController : MonoBehaviour
 
 		if (pc.GetTeam ().Equals ("ANIMALS")) {
 			animal = true;
-			this.destinationSpawn = GameObject.Find ("Farmer Spawn").GetComponent<Spawner> ().GetSpawnPosition ();
+			GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Farmer Spawn");
+			this.destinationSpawn = spawns [0].GetComponent<Spawner> ().GetSpawnPosition ();
 		} else {
-			this.destinationSpawn = GameObject.Find ("Animal Spawn").GetComponent<Spawner> ().GetSpawnPosition ();
+			GameObject[] spawns = GameObject.FindGameObjectsWithTag ("Animal Spawn");
+			// pick random animal spawn
+			float rand = Random.value;
+			if (rand < 0.3) {
+				this.destinationSpawn = spawns [0].GetComponent<Spawner> ().GetSpawnPosition ();
+			} else if (rand < 0.6) {
+				this.destinationSpawn = spawns [1].GetComponent<Spawner> ().GetSpawnPosition ();
+			} else {
+				this.destinationSpawn = spawns [2].GetComponent<Spawner> ().GetSpawnPosition ();
+			}
 		}
 	}
 	
