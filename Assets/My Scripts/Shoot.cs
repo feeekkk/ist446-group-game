@@ -61,8 +61,6 @@ public class Shoot : MonoBehaviour
 					Debug.Log ("bullet hit " + hit.transform.name);
 					hit.transform.GetComponent<Health> ().TakeDamage (wds [activeWeaponIndex].damage);
 					Instantiate (blood, hit.point, hit.transform.rotation);
-				} else {
-					Debug.Log (hit.transform.name);
 				}
 			}
 
