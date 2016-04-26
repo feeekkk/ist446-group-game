@@ -24,7 +24,7 @@ public class Shoot : MonoBehaviour
 	void Start ()
 	{
 		flash = transform.Find ("Muzzle Flash");
-		wds = gameObject.GetComponentsInChildren<WeaponData> ();
+		wds = transform.parent.GetComponentsInChildren<WeaponData> ();
 		ammoLeftText = GameObject.Find ("Ammo Left").GetComponent<Text> ();
 		maxAmmoText = GameObject.Find ("Ammo Full Clip").GetComponent<Text> ();
 		audio = GameObject.Find ("Shot Sound").GetComponent<AudioSource> ();
@@ -55,19 +55,14 @@ public class Shoot : MonoBehaviour
 			Vector3 shotVector = CalculateShotVector ();
 
 			// check for hit
-			if (Physics.Raycast (transform.position, shotVector, out hit, wds [activeWeaponIndex].range)) {
-
+			if (Physics.Raycast (wds [activeWeaponIndex].transform.position, shotVector, out hit, wds [activeWeaponIndex].range)) {
 				if (hit.transform.GetComponent<Health> ()) {
-					if (hit.transform == transform) {
-						Debug.LogError ("we hit ourselves....");
-						return true;
-					}
 					// this collider has health, lets damage it
 					Debug.Log ("bullet hit " + hit.transform.name);
 					hit.transform.GetComponent<Health> ().TakeDamage (wds [activeWeaponIndex].damage);
 					Instantiate (blood, hit.transform.position, hit.transform.rotation);
 				} else {
-					//Debug.Log ("shot missed");
+					Debug.Log (hit.transform.name);
 				}
 			}
 
@@ -86,7 +81,7 @@ public class Shoot : MonoBehaviour
 	private Vector3 CalculateShotVector ()
 	{
 		if (pc && pc.isLocalPlayer) {
-			return transform.forward; // fuck it, make all player weapons perfectly accurate. game was too hard
+			return wds [activeWeaponIndex].transform.forward; // fuck it, make all player weapons perfectly accurate. game was too hard
 		}
 		Vector3 direction = Random.insideUnitCircle * wds [activeWeaponIndex].accuracyScaleLimit;
 		direction.z = wds [activeWeaponIndex].accuracyZ; // circle is at Z units 
@@ -134,8 +129,7 @@ public class Shoot : MonoBehaviour
 		if (flash) {
 			flash.GetComponent<Animation> ().Play ();
 		}
-		Vector3 pos = transform.position;
-		pos.y += 1;
+		Vector3 pos = wds [activeWeaponIndex].transform.position;
 		BulletFX (pos, direction);
 	}
 
@@ -170,11 +164,10 @@ public class Shoot : MonoBehaviour
 		Vector3 endPos;
 
 		if (!hit.transform) {
-			endPos = transform.position + (direction * wds [activeWeaponIndex].range);
+			endPos = wds [activeWeaponIndex].transform.position + (direction * wds [activeWeaponIndex].range);
 		} else {
-			endPos = hit.transform.position;
+			endPos = hit.point;
 		}
-
 
 		if (bulletFXPrefab != null) {
 			GameObject bulletFX = (GameObject)Instantiate (bulletFXPrefab, startPos, Quaternion.LookRotation (endPos - startPos));
@@ -189,7 +182,6 @@ public class Shoot : MonoBehaviour
 		} else {
 			Debug.LogError ("bulletFXPrefab missing");
 		}
-
 	}
 
 	void playShot ()

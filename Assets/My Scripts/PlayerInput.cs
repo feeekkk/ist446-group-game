@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		shootScript = gameObject.GetComponentInParent<Shoot> ();
+		shootScript = gameObject.GetComponentInChildren<Shoot> ();
 		shootGrenadeScript = gameObject.GetComponentInParent<ShootGrenade> ();
 	}
 	
